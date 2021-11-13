@@ -17,4 +17,7 @@ router.get("/", (_, res) => {
     });
 });
 
+
+router.use("/auth", require("./auth"));
+
 module.exports = router;

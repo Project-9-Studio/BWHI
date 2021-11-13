@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "gotrue-js": "^0.9.29",
     "openapi-types": "^9.3.0",
     "serverless-http": "^2.7.0",
     "swagger-jsdoc": "^6.1.0",
