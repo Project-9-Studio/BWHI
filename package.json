@@ -10,8 +10,12 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "express-oauth2-jwt-bearer": "^1.0.1",
+    "express-openid-connect": "^2.5.1",
     "fetch": "^1.1.0",
     "gotrue-js": "^0.9.29",
+    "jwks-rsa": "^2.0.5",
     "openapi-types": "^9.3.0",
     "serverless-http": "^2.7.0",
     "swagger-jsdoc": "^6.1.0",
