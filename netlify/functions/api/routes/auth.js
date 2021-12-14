@@ -1,64 +1,41 @@
 const express = require('express');
-const GoTrue = require('gotrue-js').default;
 
 const router = express.Router();
-const auth = new GoTrue({
-    APIUrl: 'https://bwhi.netlify.app/.netlify/identity'
-});
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const verifyServiceId = process.env.TWILIO_SERVICE_ID;
+const twilioClient = require('twilio')(accountSid, authToken);
 
 /**
  * @openapi
- * /auth/signup:
+ * /auth/sendToken:
  *  post:
- *      description: BWHI sign up
+ *      description: Sends verification code to BWHI user
  *      responses:
  *          200:
  *              description: Returns json object with signed in user.
  */
-router.post("/signup", async (req, res) => {
-    const user = await auth.signup(req.body.email, req.body.password);
-    res.json(user);
+router.post("/sendToken", async (req, res) => {
+    const response = await twilioClient.verify.services(verifyServiceId).verifications
+                                .create({ to: req.body.to, channel: 'sms' });
+    console.log(response);
+    res.json(true);
 });
 
 /**
  * @openapi
- * /auth/confirm:
+ * /auth/verifyToken:
  *  post:
- *      description: BWHI confirm sign up
+ *      description: Verifies code sent to BWHI user
  *      responses:
  *          200:
  *              description: Returns json object with signed in user.
  */
-router.post("/confirm", async (req, res) => {
-    const { response } = await auth.confirm(req.body.token, true);
+router.post("/verifyToken", async (req, res) => {
+    const response = await twilioClient.verify.services(verifyServiceId).verificationChecks
+                                .create({ to: req.body.to, code: req.body.code });
+    console.log(response);
     res.json(response);
-});
-
-/**
- * @openapi
- * /auth/login:
- *  post:
- *      description: BWHI login
- *      responses:
- *          200:
- *              description: Returns json object with status of login
- */
-router.post("/login", async (_, res) => {
-    const { response } = await auth.login(req.body.email, req.body.password, req.body.remember);
-    res.json(response);
-});
-
-/**
- * @openapi
- * /auth/logout:
- *  post:
- *      description: BWHI logout
- *      responses:
- *          200:
- *              description: Returns json object with status of logout
- */
-router.post("/logout", (_, res) => {
-    res.json({});
 });
 
 module.exports = router;
