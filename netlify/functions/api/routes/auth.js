@@ -16,10 +16,15 @@ const twilioClient = require('twilio')(accountSid, authToken);
  *              description: Returns json object with signed in user.
  */
 router.post("/sendToken", async (req, res) => {
-    const response = await twilioClient.verify.services(verifyServiceId).verifications
-                                .create({ to: req.body.to, channel: 'sms' });
-    console.log(response);
-    res.json(true);
+    try {
+        const response = await twilioClient.verify.services(verifyServiceId).verifications
+                                    .create({ to: req.body.to, channel: 'sms' });
+        console.log(response);
+        res.json(true);
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+    }
 });
 
 /**
@@ -32,10 +37,14 @@ router.post("/sendToken", async (req, res) => {
  *              description: Returns json object with signed in user.
  */
 router.post("/verifyToken", async (req, res) => {
-    const response = await twilioClient.verify.services(verifyServiceId).verificationChecks
-                                .create({ to: req.body.to, code: req.body.code });
-    console.log(response);
-    res.json(response);
+    try {
+        const response = await twilioClient.verify.services(verifyServiceId).verificationChecks
+                                    .create({ to: req.body.to, code: req.body.code });
+        res.json(response.valid);
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+    }
 });
 
 module.exports = router;
