@@ -1,8 +1,8 @@
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 export default function OnboardSkipBtn(props) {return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <Text style={styles.text}>Skip</Text>
+    <TouchableOpacity style={[styles.container, props.style]} onPress={props.onPress}>
+      <Text style={styles.text}>{props.btnText || "Skip"}</Text>
     </TouchableOpacity>
   );
 }

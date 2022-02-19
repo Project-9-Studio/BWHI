@@ -1,20 +1,23 @@
 import { StyleSheet, SafeAreaView, Image, View } from 'react-native';
 import { primaryBG } from "../../colors";
-import SkipBtn from "./SkipBtn";
-import NextBtn from "./NextBtn";
+import SkipBtn from "../SkipBtn";
+import NextBtn from "../NextBtn";
 
 export default function Slide(props) {
   return (
     <SafeAreaView style={styles.container}>
-        {props.showSkip && <SkipBtn />}
-  
-        <Image source={props.image} style={styles.image} />
+      {props.showSkip && <SkipBtn onPress={props.onSkipPress} />}
 
-        {props.children}
+      <Image source={props.image} style={styles.image} />
 
-        <View style={{ flex: 1 }} />
+      {props.children}
 
-        <NextBtn text={props.nextBtnText || "Next"} />
+      <View style={{ flex: 1 }} />
+
+      <NextBtn
+        text={props.nextBtnText || "Next"}
+        onPress={props.onNextPress}
+      />
     </SafeAreaView>
   );
 }

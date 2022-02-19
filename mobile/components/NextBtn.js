@@ -2,7 +2,7 @@ import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 export default function OnboardNextBtn(props) {
     return (
-      <TouchableOpacity style={styles.btn} onPress={props.onPress}>
+      <TouchableOpacity style={[styles.btn, props.style]} onPress={props.onPress}>
         <Text style={styles.btnText}>{props.text}</Text>
       </TouchableOpacity>
     );

@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import OnboardIntro from './components/onboarding/OnboardIntro';
+import Router from './components/router/Router';
+import { primaryBG } from './colors';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <OnboardIntro />
+      <Router />
       <StatusBar style='dark' />
     </View>
   );
@@ -14,7 +15,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: primaryBG
   },
 });
