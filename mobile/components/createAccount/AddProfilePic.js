@@ -1,13 +1,26 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 import { primaryBG } from "../../colors";
 import NextBtn from "../NextBtn";
 import SkipBtn from "../SkipBtn";
-import TextInputView from "./TextInputView";
 
 export default function AddProfilePic(props) {
+  const [image, setImage] = useState();
   const onContinue = () => props.navigation?.push('SelectUniversity');
-  function onProfilePress(email) {
-    //props.navigation?.push('AddProfilePic');
+
+  async function onProfilePress() {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
   }
 
   return (
@@ -16,7 +29,7 @@ export default function AddProfilePic(props) {
 
       <TouchableOpacity onPress={onProfilePress}>
         <View style={styles.profileContainer}>
-
+          {image && <Image source={{ uri: image }} style={styles.image} />}
         </View>
       </TouchableOpacity>
 
@@ -63,5 +76,11 @@ const styles = StyleSheet.create({
 
   continueBtn: {
     marginBottom: 100
+  },
+
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 40
   }
 });

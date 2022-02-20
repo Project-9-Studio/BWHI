@@ -3,10 +3,6 @@ import { primaryBG } from "../../colors";
 import NextBtn from "../NextBtn";
 
 export default function SelectUniversity(props) {
-  function onProfilePress(email) {
-    //props.navigation?.push('AddProfilePic');
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ flex: 1 }} />
