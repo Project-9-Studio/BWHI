@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from "react-native";
 import {Picker} from '@react-native-picker/picker';
 import { primaryBG } from "../../colors";
 import NextBtn from "../NextBtn";
