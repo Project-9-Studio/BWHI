@@ -27,29 +27,30 @@ export default function SelectUniversityPicker(props) {
       </TouchableOpacity>
 
       <BottomSheet
-          modalProps={{ onPress: () => setShowModal(false) }}
-          isVisible={showModal}
-        >
-          <View style={[styles.bottomSheetContainer, { height: window.height / 2.25 }]}>
-            <Picker
-              selectedValue={value.value}
-              onValueChange={onSelect}
-              style={{ alignSelf: 'stretch' }}
-              itemStyle={{ color: 'white', height: 200 }}
-            >
-              {schools.map(({ label, value }, index) => <Picker.Item label={label} value={value} key={index} />)}
-            </Picker>
+        modalProps={{ onPress: () => setShowModal(false) }}
+        isVisible={showModal}
+        containerStyle={{ zIndex: -1 }}
+      >
+        <View style={[styles.bottomSheetContainer, { height: window.height / 2.25 }]}>
+          <Picker
+            selectedValue={value.value}
+            onValueChange={onSelect}
+            style={{ alignSelf: 'stretch' }}
+            itemStyle={{ color: 'white', height: 200 }}
+          >
+            {schools.map(({ label, value }, index) => <Picker.Item label={label} value={value} key={index} />)}
+          </Picker>
 
-            <View style={{ flex: 1 }} />
+          <View style={{ flex: 1 }} />
 
-            <Button
-              title="Continue"
-              buttonStyle={{ backgroundColor: 'white', width: '100%' }}
-              titleStyle={{ color: 'black' }}
-              onPress={() => setShowModal(false)}
-            />
-          </View>
-        </BottomSheet>
+          <Button
+            title="Continue"
+            buttonStyle={{ backgroundColor: 'white', width: '100%' }}
+            titleStyle={{ color: 'black' }}
+            onPress={() => setShowModal(false)}
+          />
+        </View>
+      </BottomSheet>
     </>
   );
 }

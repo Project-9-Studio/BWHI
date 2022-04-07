@@ -22,7 +22,7 @@ export default function Slide(props) {
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
@@ -35,5 +35,20 @@ const styles = StyleSheet.create({
     height: 310,
     marginTop: 25,
     marginBottom: 48
+  },
+
+  title: {
+    fontSize: 24,
+    lineHeight: 43,
+    fontWeight: 'bold',
+    marginBottom: 12
+  },
+
+  subtitle: {
+    fontSize: 18,
+    lineHeight: 22,
+    paddingLeft: 24,
+    paddingRight: 24,
+    textAlign: 'center'
   }
 });

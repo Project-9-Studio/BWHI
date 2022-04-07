@@ -15,8 +15,8 @@ export default function CreateAccountIntro(props) {
 
         <View style={{ flex: 1 }} />
 
-        <NextBtn text="Create an Account" style={styles.nextBtn} onPress={() => props.navigation?.push("PhoneNumber")} />
-        <SkipBtn btnText="Maybe Later" style={styles.skipBtn} />
+        <NextBtn text="Continue" style={styles.nextBtn} onPress={() => props.navigation?.push("PhoneNumber")} />
+        <SkipBtn btnText="Continue as guest" style={styles.skipBtn} onPress={() => props.navigation?.push('Main')} />
       </SafeAreaView>
     );
 }

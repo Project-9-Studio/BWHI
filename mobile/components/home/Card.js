@@ -6,6 +6,11 @@ import navIcon from '../../assets/navigation.png';
 import globe from '../../assets/globe.png';
 
 export default function HomeCard(props) {
+  function viewServices() {
+    props.navigation.navigate('SelectService');
+    props.bottomSheet?.snapToIndex?.(0);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
@@ -17,21 +22,23 @@ export default function HomeCard(props) {
 
       <View style={{ flex: 1}} />
 
-      <TouchableOpacity style={styles.viewServices}>          
+      <TouchableOpacity style={styles.viewServices} onPress={viewServices}>          
         <Text style={{ fontWeight: '600', fontSize: 18 }}>View Services</Text>
         <Image source={serviceIcon} style={{ width: 24, height: 24 }} />
       </TouchableOpacity>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignSelf: 'stretch', marginBottom: 20 }}>
+      <View style={{ flexDirection: 'row', height: 46, justifyContent: 'space-between', alignItems: 'center', alignSelf: 'stretch', marginBottom: 20 }}>
         <ActionButton
           icon={phoneIcon}
-          containerStyle={{ width: 120 }}
+          containerStyle={{ flex: 1, marginRight: 16 }}
           text="Call"
+          onPress={() => console.log('call')}
         />
         <ActionButton
           icon={navIcon}
-          containerStyle={{ width: 186 }}
+          containerStyle={{ flex: 1 }}
           text="Directions"
+          onPress={() => console.log('directions')}
         />
       </View>
 
@@ -39,6 +46,7 @@ export default function HomeCard(props) {
         icon={globe}
         containerStyle={{ width: '100%' }}
         text="View Website"
+          onPress={() => console.log('website')}
       />
     </View>
   );
