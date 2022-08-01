@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "348932262248",
+    "project_id": "bwhi-36fe2",
+    "storage_bucket": "bwhi-36fe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348932262248:android:80b31a3a4436c526746edd",
+        "android_client_info": {
+          "package_name": "com.example.shea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348932262248-70njvc4ef5dtb44ta0pmbadecs6l15dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy9Xt6bePLIchKdhDqhXBwSrCvxVON2b8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348932262248-70njvc4ef5dtb44ta0pmbadecs6l15dm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348932262248-c00t1o659kmivltldejsja9cb9m8uji3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shea"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
