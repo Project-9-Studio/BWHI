@@ -1,1 +1,0 @@
-export const primaryBG = "#50B8C2";
