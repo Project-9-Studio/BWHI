@@ -1,40 +1,76 @@
 {
   "project_info": {
-    "project_number": "348932262248",
-    "project_id": "bwhi-36fe2",
-    "storage_bucket": "bwhi-36fe2.appspot.com"
+    "project_number": "487471929955",
+    "project_id": "shea-ac999",
+    "storage_bucket": "shea-ac999.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:348932262248:android:80b31a3a4436c526746edd",
+        "mobilesdk_app_id": "1:487471929955:android:f07cefc4f681e348a47656",
         "android_client_info": {
           "package_name": "com.example.shea"
         }
       },
       "oauth_client": [
         {
-          "client_id": "348932262248-70njvc4ef5dtb44ta0pmbadecs6l15dm.apps.googleusercontent.com",
+          "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCy9Xt6bePLIchKdhDqhXBwSrCvxVON2b8"
+          "current_key": "AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "348932262248-70njvc4ef5dtb44ta0pmbadecs6l15dm.apps.googleusercontent.com",
+              "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "348932262248-c00t1o659kmivltldejsja9cb9m8uji3.apps.googleusercontent.com",
+              "client_id": "487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.shea"
+                "bundle_id": "com.project9.shea"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487471929955:android:d40b12a9af21d8dda47656",
+        "android_client_info": {
+          "package_name": "com.project9.shea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.project9.shea"
               }
             }
           ]

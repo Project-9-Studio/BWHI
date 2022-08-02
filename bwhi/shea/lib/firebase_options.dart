@@ -47,30 +47,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDCCSy2vm4WbVPDFPt_esTfmZOISifKrhE',
-    appId: '1:348932262248:web:46d4964e7b83b273746edd',
-    messagingSenderId: '348932262248',
-    projectId: 'bwhi-36fe2',
-    authDomain: 'bwhi-36fe2.firebaseapp.com',
-    storageBucket: 'bwhi-36fe2.appspot.com',
-    measurementId: 'G-FF7V30X13N',
+    apiKey: 'AIzaSyDoUCv7MgTAIajA8-0icQx54XpgMXbOiqc',
+    appId: '1:487471929955:web:92d00e57228c9f5fa47656',
+    messagingSenderId: '487471929955',
+    projectId: 'shea-ac999',
+    authDomain: 'shea-ac999.firebaseapp.com',
+    storageBucket: 'shea-ac999.appspot.com',
+    measurementId: 'G-RG3PFP01PE',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCy9Xt6bePLIchKdhDqhXBwSrCvxVON2b8',
-    appId: '1:348932262248:android:80b31a3a4436c526746edd',
-    messagingSenderId: '348932262248',
-    projectId: 'bwhi-36fe2',
-    storageBucket: 'bwhi-36fe2.appspot.com',
+    apiKey: 'AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4',
+    appId: '1:487471929955:android:f07cefc4f681e348a47656',
+    messagingSenderId: '487471929955',
+    projectId: 'shea-ac999',
+    storageBucket: 'shea-ac999.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBRFSwIbiuMu0kAmQTPjpPy7mYF5_uYejw',
-    appId: '1:348932262248:ios:8a83fc36f2bc27ba746edd',
-    messagingSenderId: '348932262248',
-    projectId: 'bwhi-36fe2',
-    storageBucket: 'bwhi-36fe2.appspot.com',
-    iosClientId: '348932262248-c00t1o659kmivltldejsja9cb9m8uji3.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDglwpZ7m4mvzJnP7NDVacgsRRZMQQuvsc',
+    appId: '1:487471929955:ios:76aec8bdc012ebaca47656',
+    messagingSenderId: '487471929955',
+    projectId: 'shea-ac999',
+    storageBucket: 'shea-ac999.appspot.com',
+    androidClientId: '487471929955-ckbeihpalv7p2uhvqu4l5nbcs37ro9j0.apps.googleusercontent.com',
+    iosClientId: '487471929955-vidgftdrr9pu59tm1e4r2qgts8i9lhc0.apps.googleusercontent.com',
     iosBundleId: 'com.example.shea',
   );
 }
