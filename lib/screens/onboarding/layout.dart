@@ -3,18 +3,24 @@ import 'package:shea/screens/onboarding/app_bar.dart';
 
 class SheaOnboardLayout extends StatelessWidget {
   final Widget? child;
-  const SheaOnboardLayout({Key? key, this.child}) : super(key: key);
+  final bool showAppBar;
+
+  const SheaOnboardLayout({
+    Key? key,
+    this.child,
+    this.showAppBar = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SheaOnboardAppBar(),
+      appBar: (showAppBar) ? const SheaOnboardAppBar() : null,
       backgroundColor: const Color(0xff50B8C2),
       body: SafeArea(
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          padding: const EdgeInsets.only(left: 24, right: 24, bottom: 27),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: child,
         ),
       ),

@@ -25,7 +25,7 @@ class SheaOnboardBody extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 40),
+          margin: const EdgeInsets.only(bottom: 10),
           child: image,
         ),
         Container(
@@ -45,9 +45,8 @@ class SheaOnboardBody extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(color: Colors.black, fontSize: 18),
         ),
-        const Spacer(),
         Container(
-          margin: const EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(top: 40, bottom: 20),
           child: DotsIndicator(
             dotsCount: 3,
             position: activeProgress ?? 0,
@@ -58,7 +57,7 @@ class SheaOnboardBody extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(bottom: 70),
+          margin: const EdgeInsets.only(bottom: 10),
           child: SheaPrimaryButton(
             text: btnText ?? "",
             onPressed: onNextPress,

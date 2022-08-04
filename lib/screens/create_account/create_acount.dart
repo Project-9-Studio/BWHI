@@ -8,10 +8,10 @@ class SheaCreateAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SheaCreateAccountLayout(
-      showBackButton: false,
+      showAppBar: false,
       child: Column(children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 40),
+          margin: const EdgeInsets.only(top: 30, bottom: 40),
           child: Image.asset('assets/images/createAccount.png'),
         ),
         Container(
@@ -27,9 +27,8 @@ class SheaCreateAccount extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18),
         ),
-        const Spacer(),
         Container(
-          margin: const EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(top: 45, bottom: 20),
           child: SheaPrimaryButton(
             text: "Continue",
             onPressed: () {
@@ -45,7 +44,8 @@ class SheaCreateAccount extends StatelessWidget {
             "Already have an account",
             style: TextStyle(fontSize: 22, color: Colors.black),
           ),
-        )
+        ),
+        const Spacer(),
       ]),
     );
   }

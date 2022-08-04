@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/app.dart';
 
 void main() {
-  runApp(const SheaApp());
+  runApp(const ProviderScope(child: SheaApp()));
 }

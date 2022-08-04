@@ -8,6 +8,7 @@ class SheaOnboardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SheaOnboardLayout(
+      showAppBar: false,
       child: Column(
         children: [
           Container(
@@ -35,7 +36,7 @@ class SheaOnboardHome extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            margin: const EdgeInsets.only(bottom: 25),
+            margin: const EdgeInsets.only(bottom: 5),
             child: SheaPrimaryButton(
               text: "Create Account",
               onPressed: () {
@@ -43,32 +44,35 @@ class SheaOnboardHome extends StatelessWidget {
               },
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Already have an account?",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "signIn");
-                },
-                child: const Text(
-                  "Sign in",
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "Already have an account?",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
-              ),
-            ],
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "signIn");
+                  },
+                  child: const Text(
+                    "Sign in",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
