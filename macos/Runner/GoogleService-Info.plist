@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com</string>
+	<string>487471929955-vidgftdrr9pu59tm1e4r2qgts8i9lhc0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d</string>
+	<string>com.googleusercontent.apps.487471929955-vidgftdrr9pu59tm1e4r2qgts8i9lhc0</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>487471929955-ckbeihpalv7p2uhvqu4l5nbcs37ro9j0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.project9.shea</string>
+	<string>com.example.shea</string>
 	<key>PROJECT_ID</key>
 	<string>shea-ac999</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:487471929955:ios:2c39c806a585f6e0a47656</string>
+	<string>1:487471929955:ios:aae3d2bf72602385a47656</string>
 </dict>
 </plist>

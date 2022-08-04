@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -58,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4',
-    appId: '1:487471929955:android:f07cefc4f681e348a47656',
+    appId: '1:487471929955:android:d40b12a9af21d8dda47656',
     messagingSenderId: '487471929955',
     projectId: 'shea-ac999',
     storageBucket: 'shea-ac999.appspot.com',
@@ -66,7 +63,18 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDglwpZ7m4mvzJnP7NDVacgsRRZMQQuvsc',
-    appId: '1:487471929955:ios:76aec8bdc012ebaca47656',
+    appId: '1:487471929955:ios:2c39c806a585f6e0a47656',
+    messagingSenderId: '487471929955',
+    projectId: 'shea-ac999',
+    storageBucket: 'shea-ac999.appspot.com',
+    androidClientId: '487471929955-ckbeihpalv7p2uhvqu4l5nbcs37ro9j0.apps.googleusercontent.com',
+    iosClientId: '487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com',
+    iosBundleId: 'com.project9.shea',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDglwpZ7m4mvzJnP7NDVacgsRRZMQQuvsc',
+    appId: '1:487471929955:ios:aae3d2bf72602385a47656',
     messagingSenderId: '487471929955',
     projectId: 'shea-ac999',
     storageBucket: 'shea-ac999.appspot.com',

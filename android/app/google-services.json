@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487471929955:android:f07cefc4f681e348a47656",
+        "mobilesdk_app_id": "1:487471929955:android:1d00712bcae98631a47656",
         "android_client_info": {
-          "package_name": "com.example.shea"
+          "package_name": "com.project9.shea"
         }
       },
       "oauth_client": [
