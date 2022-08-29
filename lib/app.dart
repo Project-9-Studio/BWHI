@@ -6,6 +6,7 @@ import 'package:shea/screens/create_account/email.dart';
 import 'package:shea/screens/create_account/name.dart';
 import 'package:shea/screens/create_account/profile_pic.dart';
 import 'package:shea/screens/create_account/select_school.dart';
+import 'package:shea/screens/home/home.dart';
 import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
@@ -36,10 +37,9 @@ class SheaApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const SheaOnboard2());
           case "onboard/3":
             return MaterialPageRoute(builder: (_) => const SheaOnboard3());
+
           case "signIn":
             return MaterialPageRoute(builder: (_) => const SheaSignIn());
-          case "createAccount":
-            return MaterialPageRoute(builder: (_) => const SheaCreateAccount());
           case SheaConfirmNumber.routeName:
             final args = settings.arguments as SheaConfirmNumberArgs;
 
@@ -49,6 +49,9 @@ class SheaApp extends StatelessWidget {
                 resendToken: args.resendToken,
               ),
             );
+
+          case "createAccount":
+            return MaterialPageRoute(builder: (_) => const SheaCreateAccount());
           case "createAccount/name":
             return MaterialPageRoute(builder: (_) => const SheaCreateName());
           case "createAccount/email":
@@ -57,6 +60,9 @@ class SheaApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const SheaProfilePic());
           case "createAccount/selectSchool":
             return MaterialPageRoute(builder: (_) => const SheaSelectSchool());
+
+          case "home":
+            return MaterialPageRoute(builder: (_) => const SheaAppHome());
           default:
             return null;
         }

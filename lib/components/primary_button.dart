@@ -19,7 +19,7 @@ class SheaPrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 15),
-          primary: color,
+          backgroundColor: color,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:phone_number/phone_number.dart';
-import 'package:shea/models/auth.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 import 'package:shea/screens/sign_in/confirm_code.dart';
@@ -13,7 +12,6 @@ class SheaSignIn extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final signIn = ref.read(authProvider.notifier).signIn;
     final phoneUtil = PhoneNumberUtil();
     final regionCode = useState("US");
     final phoneController = PhoneNumberEditingController(

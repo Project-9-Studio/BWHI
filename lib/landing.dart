@@ -10,7 +10,7 @@ class SheaAppLanding extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void _init() async {
+    void init() async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
@@ -25,7 +25,7 @@ class SheaAppLanding extends HookConsumerWidget {
     }
 
     useEffect(() {
-      _init();
+      init();
       return;
     });
 
