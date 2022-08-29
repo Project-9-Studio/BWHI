@@ -7,21 +7,38 @@ class SheaHomeBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.black,
-      type: BottomNavigationBarType.fixed,
-      items: const [
-        BottomNavigationBarItem(label: "Home", icon: HeroIcon(HeroIcons.home)),
-        BottomNavigationBarItem(
-          label: "Fast Facts",
-          icon: HeroIcon(HeroIcons.documentDuplicate),
+    return Container(
+      height: 105,
+      padding: const EdgeInsets.only(top: 10),
+      decoration: const BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
         ),
-        BottomNavigationBarItem(
-          label: "Resources",
-          icon: HeroIcon(HeroIcons.bookOpen),
-        ),
-        BottomNavigationBarItem(label: "Profile", icon: SheaProfileNavButton()),
-      ],
+      ),
+      child: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: HeroIcon(HeroIcons.home),
+          ),
+          BottomNavigationBarItem(
+            label: "Fast Facts",
+            icon: HeroIcon(HeroIcons.documentDuplicate),
+          ),
+          BottomNavigationBarItem(
+            label: "Resources",
+            icon: HeroIcon(HeroIcons.bookOpen),
+          ),
+          BottomNavigationBarItem(
+            label: "Profile",
+            icon: SheaProfileNavButton(),
+          ),
+        ],
+      ),
     );
   }
 }

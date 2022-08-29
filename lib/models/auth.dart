@@ -10,14 +10,14 @@ import 'package:image_picker/image_picker.dart';
 // Auth state
 @immutable
 class SheaAuth {
-  final UserCredential? creds;
+  final User? user;
   final SheaUserProfile profile;
 
-  const SheaAuth({this.creds, this.profile = const SheaUserProfile()});
+  const SheaAuth({this.user, this.profile = const SheaUserProfile()});
 
   SheaAuth copyWith(SheaAuth auth) {
     return SheaAuth(
-      creds: auth.creds ?? creds,
+      user: auth.user ?? user,
       profile: profile.copyWith(auth.profile),
     );
   }
@@ -59,6 +59,16 @@ class SheaUserProfile {
       "school": school,
     };
   }
+
+  static SheaUserProfile fromMap(data) {
+    return SheaUserProfile(
+      id: data["id"],
+      name: data["name"],
+      email: data["email"],
+      profileImageURL: data["profileImageURL"],
+      school: data["school"],
+    );
+  }
 }
 
 class SheaAuthNotifier extends StateNotifier<SheaAuth> {
@@ -70,7 +80,7 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
     try {
       final auth = FirebaseAuth.instance;
       final creds = await auth.signInWithCredential(credential);
-      state = state.copyWith(SheaAuth(creds: creds));
+      state = state.copyWith(SheaAuth(user: creds.user));
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -90,7 +100,7 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
       final creds = await FirebaseAuth.instance.signInWithCredential(
         credential,
       );
-      state = state.copyWith(SheaAuth(creds: creds));
+      state = state.copyWith(SheaAuth(user: creds.user));
       await fetchProfile();
     } catch (e) {
       debugPrint(e.toString());
@@ -101,12 +111,12 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
 
   Future<SheaAuth> fetchProfile() async {
     final db = FirebaseFirestore.instance;
-    final id = state.creds?.user?.uid;
+    final id = state.user?.uid;
     final profile = await db.collection("users").doc(id).get();
 
     if (profile.exists) {
       state = state.copyWith(
-        SheaAuth(profile: profile as SheaUserProfile),
+        SheaAuth(profile: SheaUserProfile.fromMap(profile.data())),
       );
     }
 
@@ -116,7 +126,7 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
   Future<SheaAuth> saveProfileImage(XFile file) async {
     try {
       final storageRef = FirebaseStorage.instance.ref();
-      final profileRef = storageRef.child("images/profile/${state.profile.id}");
+      final profileRef = storageRef.child("images/profile/${state.user?.uid}");
       await profileRef.putFile(File(file.path));
       final url = await profileRef.getDownloadURL();
       updateProfile(SheaUserProfile(profileImageURL: url));
@@ -130,9 +140,13 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
   Future<SheaAuth> saveProfile() async {
     try {
       final db = FirebaseFirestore.instance;
+
+      // Ensure id is set to logged in user uid
+      updateProfile(SheaUserProfile(id: state.user?.uid));
+
       await db
           .collection('users')
-          .doc(state.profile.id)
+          .doc(state.user?.uid)
           .set(state.profile.toMap());
     } catch (e) {
       debugPrint("Could not save profile: ${e.toString()}");
@@ -142,6 +156,11 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
 
   SheaAuth updateProfile(SheaUserProfile profile) {
     state = state.copyWith(SheaAuth(profile: profile));
+    return state;
+  }
+
+  SheaAuth setAuth(SheaAuth auth) {
+    state = auth;
     return state;
   }
 }

@@ -25,6 +25,7 @@ class SheaApp extends StatelessWidget {
         brightness: Brightness.dark,
         backgroundColor: Colors.black,
         textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme),
+        fontFamily: GoogleFonts.urbanist().fontFamily,
       ),
       home: const SheaAppLanding(),
       onGenerateRoute: (settings) {

@@ -13,11 +13,12 @@ class SheaCreateAccountAppBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final canPop = Navigator.canPop(context);
     return AppBar(
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       backgroundColor: const Color(0xff50B8C2),
       elevation: 0,
-      leading: (showBackButton) ? const SheaBackButton() : null,
+      leading: (canPop && showBackButton) ? const SheaBackButton() : null,
       automaticallyImplyLeading: false,
       leadingWidth: 90,
     );
