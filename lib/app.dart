@@ -6,7 +6,7 @@ import 'package:shea/screens/create_account/email.dart';
 import 'package:shea/screens/create_account/name.dart';
 import 'package:shea/screens/create_account/profile_pic.dart';
 import 'package:shea/screens/create_account/select_school.dart';
-import 'package:shea/screens/home/home.dart';
+import 'package:shea/screens/home/main.dart';
 import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
