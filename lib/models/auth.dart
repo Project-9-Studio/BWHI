@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 // Auth state
 @immutable
@@ -25,15 +29,35 @@ class SheaUserProfile {
   final String? id;
   final String? name;
   final String? email;
+  final String? profileImageURL;
+  final String? school;
 
-  const SheaUserProfile({this.id, this.name, this.email});
+  const SheaUserProfile({
+    this.id,
+    this.name,
+    this.email,
+    this.profileImageURL,
+    this.school,
+  });
 
   SheaUserProfile copyWith(SheaUserProfile profile) {
     return SheaUserProfile(
       id: profile.id ?? id,
       name: profile.name ?? name,
-      email: profile.name ?? email,
+      email: profile.email ?? email,
+      profileImageURL: profile.profileImageURL ?? profileImageURL,
+      school: profile.school ?? school,
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "id": id,
+      "name": name,
+      "email": email,
+      "profileImageURL": profileImageURL,
+      "school": school,
+    };
   }
 }
 
@@ -86,6 +110,33 @@ class SheaAuthNotifier extends StateNotifier<SheaAuth> {
       );
     }
 
+    return state;
+  }
+
+  Future<SheaAuth> saveProfileImage(XFile file) async {
+    try {
+      final storageRef = FirebaseStorage.instance.ref();
+      final profileRef = storageRef.child("images/profile/${state.profile.id}");
+      await profileRef.putFile(File(file.path));
+      final url = await profileRef.getDownloadURL();
+      updateProfile(SheaUserProfile(profileImageURL: url));
+      return state;
+    } catch (e) {
+      debugPrint("Could not save image: ${e.toString()}");
+    }
+    return state;
+  }
+
+  Future<SheaAuth> saveProfile() async {
+    try {
+      final db = FirebaseFirestore.instance;
+      await db
+          .collection('users')
+          .doc(state.profile.id)
+          .set(state.profile.toMap());
+    } catch (e) {
+      debugPrint("Could not save profile: ${e.toString()}");
+    }
     return state;
   }
 

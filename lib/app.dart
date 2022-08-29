@@ -4,6 +4,8 @@ import 'package:shea/landing.dart';
 import 'package:shea/screens/create_account/create_acount.dart';
 import 'package:shea/screens/create_account/email.dart';
 import 'package:shea/screens/create_account/name.dart';
+import 'package:shea/screens/create_account/profile_pic.dart';
+import 'package:shea/screens/create_account/select_school.dart';
 import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
@@ -51,6 +53,10 @@ class SheaApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const SheaCreateName());
           case "createAccount/email":
             return MaterialPageRoute(builder: (_) => const SheaCreateEmail());
+          case "createAccount/profile_pic":
+            return MaterialPageRoute(builder: (_) => const SheaProfilePic());
+          case "createAccount/selectSchool":
+            return MaterialPageRoute(builder: (_) => const SheaSelectSchool());
           default:
             return null;
         }

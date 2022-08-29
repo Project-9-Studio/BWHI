@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -9,16 +10,18 @@ class SheaAppLanding extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void navigateHome() {
-      Navigator.popAndPushNamed(context, 'onboard');
-    }
-
     void _init() async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
 
-      navigateHome();
+      FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+        if (user != null) {
+          Navigator.popAndPushNamed(context, 'onboard');
+        } else {
+          Navigator.popAndPushNamed(context, 'home');
+        }
+      });
     }
 
     useEffect(() {

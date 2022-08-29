@@ -65,11 +65,8 @@ class SheaSignIn extends HookConsumerWidget {
 
               await FirebaseAuth.instance.verifyPhoneNumber(
                 phoneNumber: phoneNumber.international,
-                verificationCompleted: (PhoneAuthCredential credential) async {
-                  // Automatically verified
-                  final creds = await signIn(credential);
-                  // Navigate depending on has profile or not.
-                },
+                verificationCompleted:
+                    (PhoneAuthCredential credential) async {},
                 verificationFailed: (FirebaseAuthException e) {
                   // Show error
                   if (e.code == 'invalid-phone-number') {
