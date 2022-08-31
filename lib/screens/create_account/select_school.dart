@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/components/school_picker.dart';
-import 'package:shea/models/auth.dart';
+import 'package:shea/models/user/profile.dart';
+import 'package:shea/models/user/user.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 
@@ -13,9 +14,9 @@ class SheaSelectSchool extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(authProvider).profile;
-    final updateProfile = ref.read(authProvider.notifier).updateProfile;
-    final saveProfile = ref.read(authProvider.notifier).saveProfile;
+    final profile = ref.watch(userProvider).profile;
+    final updateProfile = ref.read(userProvider.notifier).updateProfile;
+    final saveProfile = ref.read(userProvider.notifier).saveProfile;
     final school = profile.school ?? defaultSchoolSelect;
     final isLoading = useState(false);
     const Loader = Center(child: CircularProgressIndicator());

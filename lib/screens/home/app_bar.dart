@@ -11,7 +11,10 @@ class SheaHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       systemOverlayStyle: SystemUiOverlayStyle.light,
       backgroundColor: Colors.black,
       leading: null,
-      title: const SheaLogoText(),
+      title: Image.asset(
+        'assets/images/logo.png',
+        width: 24,
+      ),
     );
   }
 

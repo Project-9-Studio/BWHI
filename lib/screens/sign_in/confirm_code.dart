@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shea/models/auth.dart';
+import 'package:shea/models/user/user.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 
@@ -28,7 +28,7 @@ class SheaConfirmNumber extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final smsCode = useState("");
-    final confirmCode = ref.read(authProvider.notifier).confirmCode;
+    final confirmCode = ref.read(userProvider.notifier).confirmCode;
 
     void navigateAway(String path) {
       Navigator.pushNamedAndRemoveUntil(context, path, (route) => false);

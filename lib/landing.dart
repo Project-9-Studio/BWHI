@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/firebase_options.dart';
-import 'package:shea/models/auth.dart';
+import 'package:shea/models/user/user.dart';
 
 class SheaAppLanding extends HookConsumerWidget {
   const SheaAppLanding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final saveAuth = ref.read(authProvider.notifier).setAuth;
-    final fetchProfile = ref.read(authProvider.notifier).fetchProfile;
+    final saveAuth = ref.read(userProvider.notifier).setAuth;
+    final fetchProfile = ref.read(userProvider.notifier).fetchProfile;
     void navigateAway(String path) => Navigator.popAndPushNamed(context, path);
 
     void init() async {
@@ -22,7 +22,7 @@ class SheaAppLanding extends HookConsumerWidget {
 
       FirebaseAuth.instance.authStateChanges().listen((User? user) async {
         if (user != null) {
-          saveAuth(SheaAuth(user: user));
+          saveAuth(SheaUser(user: user));
           final result = await fetchProfile();
           final path =
               (result.profile.id != null) ? "home" : "createAccount/name";

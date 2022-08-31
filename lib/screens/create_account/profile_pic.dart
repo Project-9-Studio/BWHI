@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/models/app.dart';
-import 'package:shea/models/auth.dart';
+import 'package:shea/models/user/user.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 
@@ -11,8 +11,8 @@ class SheaProfilePic extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(authProvider).profile;
-    final saveProfileImage = ref.read(authProvider.notifier).saveProfileImage;
+    final profile = ref.watch(userProvider).profile;
+    final saveProfileImage = ref.read(userProvider.notifier).saveProfileImage;
     final isLoading = useState(false);
 
     void navigateAway() {

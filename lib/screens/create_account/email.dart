@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shea/models/auth.dart';
+import 'package:shea/models/user/profile.dart';
+import 'package:shea/models/user/user.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 
@@ -9,8 +10,8 @@ class SheaCreateEmail extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(authProvider).profile;
-    final updateProfile = ref.read(authProvider.notifier).updateProfile;
+    final profile = ref.watch(userProvider).profile;
+    final updateProfile = ref.read(userProvider.notifier).updateProfile;
 
     void onContinue() {
       Navigator.pushNamed(context, "createAccount/profile_pic");
