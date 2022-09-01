@@ -22,28 +22,26 @@ class SheaAppHome extends HookConsumerWidget {
       backgroundColor: const Color(0xFF50B8C2),
       body: DefaultTabController(
         length: 2,
-        child: SizedBox(
-          child: Column(
-            children: [
-              Container(
-                color: Colors.black,
-                child: TabBar(
-                  labelStyle: labelStyle,
-                  unselectedLabelStyle: labelStyle,
-                  indicatorColor: Colors.white,
-                  tabs: const [
-                    Tab(icon: Text("Checklist")),
-                    Tab(icon: Text("Campus Health")),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Container(
+              color: Colors.black,
+              child: TabBar(
+                labelStyle: labelStyle,
+                unselectedLabelStyle: labelStyle,
+                indicatorColor: Colors.white,
+                tabs: const [
+                  Tab(icon: Text("Checklist")),
+                  Tab(icon: Text("Campus Health")),
+                ],
               ),
-              const Expanded(
-                child: TabBarView(
-                  children: [SheaDailyChecklist(), SheaCampusHealth()],
-                ),
-              )
-            ],
-          ),
+            ),
+            const Expanded(
+              child: TabBarView(
+                children: [SheaDailyChecklist(), SheaCampusHealth()],
+              ),
+            )
+          ],
         ),
       ),
     );

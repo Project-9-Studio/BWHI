@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shea/components/shea_text_logo.dart';
 
 class SheaHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SheaHomeAppBar({Key? key}) : super(key: key);

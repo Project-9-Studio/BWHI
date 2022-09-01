@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,7 +18,7 @@ class SheaSelectSchool extends HookConsumerWidget {
     final saveProfile = ref.read(userProvider.notifier).saveProfile;
     final school = profile.school ?? defaultSchoolSelect;
     final isLoading = useState(false);
-    const Loader = Center(child: CircularProgressIndicator());
+    const loader = Center(child: CircularProgressIndicator());
 
     void navigateHome() => Navigator.pushNamed(context, 'home');
 
@@ -35,7 +34,7 @@ class SheaSelectSchool extends HookConsumerWidget {
 
     return SheaCreateAccountLayout(
       child: (isLoading.value)
-          ? Loader
+          ? loader
           : Column(children: [
               Expanded(
                 child: Center(
