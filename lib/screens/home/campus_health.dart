@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/models/school.dart';
 import 'package:shea/models/user/user.dart';
@@ -42,8 +43,15 @@ class SheaCampusHealth extends HookConsumerWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 7),
+                  child: const HeroIcon(
+                    HeroIcons.calendar,
+                    color: Colors.black,
+                  ),
+                ),
+                const Text(
                   "Add Appointment to Calendar",
                   style: TextStyle(
                     fontSize: 18,

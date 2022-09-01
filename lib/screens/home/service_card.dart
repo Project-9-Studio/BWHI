@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:shea/models/school.dart';
 
 class SheaSchoolServicesCard extends StatelessWidget {
@@ -110,6 +111,11 @@ class SheaSchoolServicesCard extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
+                    Spacer(),
+                    HeroIcon(
+                      HeroIcons.arrowNarrowRight,
+                      color: Colors.black,
+                    )
                   ],
                 ),
               ),
@@ -126,8 +132,16 @@ class SheaSchoolServicesCard extends StatelessWidget {
                       style: actionStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("Call", style: actionTextStyle),
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 7),
+                            child: const HeroIcon(
+                              HeroIcons.phone,
+                              solid: true,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const Text("Call", style: actionTextStyle),
                         ],
                       ),
                     ),
@@ -139,8 +153,16 @@ class SheaSchoolServicesCard extends StatelessWidget {
                       style: actionStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("Directions", style: actionTextStyle)
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 7),
+                            child: const HeroIcon(
+                              HeroIcons.map,
+                              solid: true,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const Text("Directions", style: actionTextStyle)
                         ],
                       ),
                     ),
@@ -153,8 +175,16 @@ class SheaSchoolServicesCard extends StatelessWidget {
               style: actionStyle,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("View Website", style: actionTextStyle),
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 7),
+                    child: const HeroIcon(
+                      HeroIcons.globeAlt,
+                      solid: true,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const Text("View Website", style: actionTextStyle),
                 ],
               ),
             ),
