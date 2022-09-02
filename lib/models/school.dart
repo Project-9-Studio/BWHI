@@ -24,17 +24,28 @@ class SheaSchool {
 
   SheaSchool copyWith(SheaSchool school) {
     return SheaSchool(
-        id: school.id ?? id,
-        name: school.name ?? name,
-        address: school.address ?? address,
-        services: {
-          ...services,
-          ...school.services,
-        });
+      id: school.id ?? id,
+      name: school.name ?? name,
+      address: school.address ?? address,
+      services: {
+        ...services,
+        ...school.services,
+      },
+    );
   }
 
   List<SheaServiceCenter> listServiceCenters() {
     return List.from(services.values);
+  }
+
+  @override
+  String toString() {
+    return {
+      "id": id,
+      "name": name,
+      "address": address,
+      "services": services.toString()
+    }.toString();
   }
 }
 
@@ -81,10 +92,11 @@ class SheaServiceCenter {
       crisisPhone: data["crisisPhone"],
       hours: data["hours"],
       mainPhone: data["mainPhone"],
-      mentalServices: data["mentalServices"],
+      mentalServices: List<String>.from(data["mental_services"] ?? []),
       phone: data["phone"],
-      physicalServices: data["physicalServices"],
-      reproductiveSrvices: data["reproductiveSrvices"],
+      physicalServices: List<String>.from(data["physical_services"] ?? []),
+      reproductiveSrvices:
+          List<String>.from(data["reproductive_services"] ?? []),
       textPhone: data["textPhone"],
       type: data["type"],
       website: data["website"],
@@ -109,6 +121,26 @@ class SheaServiceCenter {
       type: serviceCenter.type ?? type,
       website: serviceCenter.website ?? website,
     );
+  }
+
+  @override
+  String toString() {
+    return {
+      "id": id,
+      "name": name,
+      "address": address,
+      "addressUrl": addressUrl,
+      "crisisPhone": crisisPhone,
+      "hours": hours,
+      "mainPhone": mainPhone,
+      "mentalServices": mentalServices,
+      "phone": phone,
+      "physicalServices": physicalServices?.toString(),
+      "reproductiveSrvices": reproductiveSrvices?.toString(),
+      "textPhone": textPhone,
+      "type": type,
+      "website": website,
+    }.toString();
   }
 }
 
@@ -141,6 +173,11 @@ class SheaSchoolState {
       entities: {...entities, ...state.entities},
     );
   }
+
+  @override
+  String toString() {
+    return {"ids": ids.toString(), "entities": entities.toString()}.toString();
+  }
 }
 
 class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
@@ -155,10 +192,13 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
       ),
     );
 
-    state = SheaSchoolState(
-      ids: List<String>.from(schools.map((e) => e.id ?? "")),
-      entities: Map<String, SheaSchool>.fromIterable(schools, key: (e) => e.id),
-    );
+    if (schools.isNotEmpty) {
+      state = SheaSchoolState(
+        ids: List<String>.from(schools.map((e) => e.id ?? "")),
+        entities:
+            Map<String, SheaSchool>.fromIterable(schools, key: (e) => e.id),
+      );
+    }
 
     return state;
   }
@@ -175,7 +215,7 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
 
     if (school != null) {
       state = state.copyWith(SheaSchoolState(entities: {
-        id: school!.copyWith(
+        id: school.copyWith(
           SheaSchool(
             services: Map<String, SheaServiceCenter>.fromIterable(
               services,
@@ -185,7 +225,6 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
         )
       }));
     }
-
     return state;
   }
 }

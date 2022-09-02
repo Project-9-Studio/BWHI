@@ -17,21 +17,33 @@ class SheaCampusHealth extends HookConsumerWidget {
     final fetchSchoolServices =
         ref.read(schoolsProvider.notifier).fetchSchoolServices;
     final school = getSchoolByName(name: profile.school) ?? const SheaSchool();
+    final isLoading = useState(true);
 
     useEffect(() {
-      fetchSchools().then(
-        (state) => fetchSchoolServices(
-          getSchoolByName(name: profile.school)?.id ?? "",
-        ),
-      );
+      fetchSchools()
+          .then(
+            (state) => fetchSchoolServices(
+              getSchoolByName(name: profile.school)?.id ?? "",
+            ),
+          )
+          .then((value) => isLoading.value = false);
       return;
-    }, [school?.id]);
+    }, [school.id]);
 
     return Column(
       children: [
-        SheaSchoolServicesCards(school: school),
+        Expanded(
+          child: (isLoading.value)
+              ? const Center(child: CircularProgressIndicator())
+              : SheaSchoolServicesCards(school: school),
+        ),
         Container(
-          margin: const EdgeInsets.only(top: 18, left: 12, right: 12),
+          margin: const EdgeInsets.only(
+            top: 18,
+            left: 12,
+            right: 12,
+            bottom: 18,
+          ),
           child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(

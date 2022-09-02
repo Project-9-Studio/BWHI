@@ -3,7 +3,14 @@ import 'package:heroicons/heroicons.dart';
 import 'package:shea/components/profile_nav_button.dart';
 
 class SheaHomeBottomNav extends StatelessWidget {
-  const SheaHomeBottomNav({Key? key}) : super(key: key);
+  final int currentIndex;
+  final void Function(int)? onTap;
+
+  const SheaHomeBottomNav({
+    Key? key,
+    this.currentIndex = 0,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +27,8 @@ class SheaHomeBottomNav extends StatelessWidget {
       child: BottomNavigationBar(
         backgroundColor: Colors.black,
         type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex,
+        onTap: onTap,
         items: const [
           BottomNavigationBarItem(
             label: "Home",

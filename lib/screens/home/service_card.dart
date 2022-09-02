@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:shea/models/school.dart';
+import 'package:shea/screens/home/view_services.dart';
 
 class SheaSchoolServicesCard extends StatelessWidget {
   final String schoolName;
@@ -86,40 +87,7 @@ class SheaSchoolServicesCard extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Container(
-              margin: const EdgeInsets.only(bottom: 32),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  elevation: 1,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 17,
-                    horizontal: 20,
-                  ),
-                  side: const BorderSide(color: Colors.black, width: 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: Row(
-                  children: const [
-                    Text(
-                      "View Services",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Spacer(),
-                    HeroIcon(
-                      HeroIcons.arrowNarrowRight,
-                      color: Colors.black,
-                    )
-                  ],
-                ),
-              ),
-            ),
+            SheaViewServices(serviceCenter: serviceCenter),
             Container(
               margin: const EdgeInsets.only(bottom: 20),
               child: Row(
