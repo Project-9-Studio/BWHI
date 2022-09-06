@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:shea/models/school.dart';
 import 'package:shea/screens/home/view_services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SheaSchoolServicesCard extends StatelessWidget {
   final String schoolName;
@@ -27,6 +29,10 @@ class SheaSchoolServicesCard extends StatelessWidget {
       fontWeight: FontWeight.w600,
       fontSize: 18,
       color: Colors.black,
+    );
+    final cancelButton = CupertinoActionSheetAction(
+      onPressed: () => Navigator.pop(context),
+      child: const Text("Cancel"),
     );
 
     return Container(
@@ -96,7 +102,30 @@ class SheaSchoolServicesCard extends StatelessWidget {
                   SizedBox(
                     width: 120,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) => CupertinoActionSheet(
+                            actions: [
+                              CupertinoActionSheetAction(
+                                onPressed: () async {
+                                  if (serviceCenter.phone != null) {
+                                    final Uri launchUri = Uri(
+                                      scheme: 'tel',
+                                      path: serviceCenter.phone,
+                                    );
+                                    final result = await launchUrl(launchUri);
+                                    debugPrint(result.toString());
+                                  }
+                                },
+                                isDefaultAction: true,
+                                child: Text("Call ${serviceCenter.phone}"),
+                              ),
+                            ],
+                            cancelButton: cancelButton,
+                          ),
+                        );
+                      },
                       style: actionStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +146,29 @@ class SheaSchoolServicesCard extends StatelessWidget {
                   SizedBox(
                     width: 186,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) => CupertinoActionSheet(
+                            actions: [
+                              CupertinoActionSheetAction(
+                                onPressed: () {},
+                                isDefaultAction: true,
+                                child: const Text("Open in Maps"),
+                              ),
+                              CupertinoActionSheetAction(
+                                onPressed: () {},
+                                isDefaultAction: true,
+                                child: const Text("Open in Google Maps"),
+                              ),
+                            ],
+                            cancelButton: CupertinoActionSheetAction(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("Cancel"),
+                            ),
+                          ),
+                        );
+                      },
                       style: actionStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +190,11 @@ class SheaSchoolServicesCard extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (serviceCenter.website != null) {
+                  await launchUrl(Uri.parse(serviceCenter.website!));
+                }
+              },
               style: actionStyle,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
