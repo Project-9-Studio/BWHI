@@ -39,6 +39,7 @@ class SheaOnboardHome extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 5),
             child: SheaPrimaryButton(
               text: "Create Account",
+              textColor: Colors.white,
               onPressed: () {
                 Navigator.pushNamed(context, 'onboard/1');
               },

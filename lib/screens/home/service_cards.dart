@@ -17,10 +17,8 @@ class SheaSchoolServicesCards extends HookConsumerWidget {
 
     final services = school.listServiceCenters();
 
-    return Column(
-      children: [
-        if (school.services.isNotEmpty)
-          SizedBox(
+    return (school.services.isNotEmpty)
+        ? SizedBox(
             width: double.infinity,
             height: 522,
             child: Swiper(
@@ -37,7 +35,6 @@ class SheaSchoolServicesCards extends HookConsumerWidget {
               ),
             ),
           )
-      ],
-    );
+        : Container();
   }
 }

@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class SheaPrimaryButton extends StatelessWidget {
   final String? text;
   final Color? color;
+  final Color? textColor;
   final void Function()? onPressed;
 
   const SheaPrimaryButton({
     Key? key,
     this.text,
-    this.color = Colors.black,
     this.onPressed,
+    this.color = Colors.black,
+    this.textColor = Colors.white,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class SheaPrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text ?? "",
-          style: const TextStyle(fontSize: 22),
+          style: TextStyle(fontSize: 22, color: textColor),
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:shea/screens/home/app_bar.dart';
 import 'package:shea/screens/home/bottom_nav.dart';
 import 'package:shea/screens/home/home.dart';
 import 'package:shea/screens/resources/main.dart';
+import 'package:shea/screens/settings/main.dart';
 
 class SheaAppHome extends HookConsumerWidget {
   const SheaAppHome({Key? key}) : super(key: key);
@@ -14,9 +15,18 @@ class SheaAppHome extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const views = [SheaAppHomeView(), SheaFastFactsView(), SheaResourcesView()];
     const titles = [null, "Fast Facts", "Resources", ""];
+    final paddingTop = MediaQuery.of(context).padding.top;
     final currentIndex = useState(0);
+
     void onTap(index) {
       if (index == 3) {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (context) {
+            return SheaSettingsScreen(paddingTop: paddingTop);
+          },
+        );
         return;
       }
       currentIndex.value = index;

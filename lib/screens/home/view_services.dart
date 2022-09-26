@@ -27,7 +27,7 @@ class SheaViewServices extends StatelessWidget {
     }
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 32),
+      margin: const EdgeInsets.only(bottom: 18),
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(
