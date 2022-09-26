@@ -50,14 +50,12 @@ class SheaFastFactsNotifier extends StateNotifier<SheaFastFactState> {
     );
 
     if (facts.isNotEmpty) {
-      debugPrint(facts.length.toString());
       state = SheaFastFactState(
         ids: List<String>.from(facts.map((e) => e.id ?? "")),
         entities:
             Map<String, SheaFastFact>.fromIterable(facts, key: (e) => e.id),
       );
     }
-    debugPrint(state.ids.first.toString());
 
     return state;
   }
