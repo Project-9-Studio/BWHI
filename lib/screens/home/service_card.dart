@@ -103,28 +103,15 @@ class SheaSchoolServicesCard extends StatelessWidget {
                     width: 120,
                     child: ElevatedButton(
                       onPressed: () async {
-                        showCupertinoModalPopup(
-                          context: context,
-                          builder: (context) => CupertinoActionSheet(
-                            actions: [
-                              CupertinoActionSheetAction(
-                                onPressed: () async {
-                                  if (serviceCenter.phone != null) {
-                                    final Uri launchUri = Uri(
-                                      scheme: 'tel',
-                                      path: serviceCenter.phone,
-                                    );
-                                    final result = await launchUrl(launchUri);
-                                    debugPrint(result.toString());
-                                  }
-                                },
-                                isDefaultAction: true,
-                                child: Text("Call ${serviceCenter.phone}"),
-                              ),
-                            ],
-                            cancelButton: cancelButton,
-                          ),
-                        );
+                        if (serviceCenter.phone != null) {
+                          final Uri launchUri = Uri(
+                            scheme: 'tel',
+                            path: serviceCenter.phone,
+                          );
+                          if (await canLaunchUrl(launchUri)) {
+                            await launchUrl(launchUri);
+                          }
+                        }
                       },
                       style: actionStyle,
                       child: Row(

@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:shea/components/school_picker.dart';
 import 'package:shea/screens/settings/nav_item.dart';
 
 class SheaSettingsScreen extends StatelessWidget {
@@ -40,12 +42,19 @@ class SheaSettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              const SheaSettingsNavItem(label: "Profile"),
-              const SheaSettingsNavItem(label: "Notifications"),
-              const SheaSettingsNavItem(label: "Follow us on @Twitter"),
-              const SheaSettingsNavItem(
-                label: "Change School",
-                labelColor: Color(0xFF0F4C82),
+              SheaSettingsNavItem(
+                label: "Profile",
+                onTap: () => Navigator.pushNamed(context, 'profile'),
+              ),
+              SheaSettingsNavItem(
+                label: "Notifications",
+                onTap: () => Navigator.pushNamed(context, 'notifications'),
+              ),
+              const SheaSelectSchoolPicker(
+                widget: SheaSettingsNavItem(
+                  label: "Change School",
+                  labelColor: Color(0xFF0F4C82),
+                ),
               ),
               SheaSettingsNavItem(
                 label: "Log out",

@@ -40,7 +40,6 @@ class SheaSelectSchool extends HookConsumerWidget {
                 child: Center(
                   child: SheaSelectSchoolPicker(
                     school: school,
-                    schools: const [defaultSchoolSelect, "Clark Atlanta"],
                     onSelect: (value) => updateProfile(
                       SheaUserProfile(school: value),
                     ),

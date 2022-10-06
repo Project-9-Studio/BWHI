@@ -148,11 +148,20 @@ class SheaServiceCenter {
 class SheaSchoolState {
   final List<String> ids;
   final Map<String, SheaSchool> entities;
+  final String? selectedSchool;
 
-  const SheaSchoolState({this.ids = const [], this.entities = const {}});
+  const SheaSchoolState({
+    this.ids = const [],
+    this.entities = const {},
+    this.selectedSchool,
+  });
 
   SheaSchool? getSchool(String id) {
     return entities[id];
+  }
+
+  List<SheaSchool> getSchoolsList() {
+    return List.from(entities.values);
   }
 
   Map<String, SheaSchool> getSchoolsByName() {
@@ -171,6 +180,7 @@ class SheaSchoolState {
     return SheaSchoolState(
       ids: [...ids, ...state.ids],
       entities: {...entities, ...state.entities},
+      selectedSchool: state.selectedSchool ?? selectedSchool,
     );
   }
 

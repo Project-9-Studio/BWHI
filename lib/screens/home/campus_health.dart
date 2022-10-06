@@ -30,13 +30,12 @@ class SheaCampusHealth extends HookConsumerWidget {
       return;
     }, [school.id]);
 
-    return Column(
+    return SingleChildScrollView(
+        child: Column(
       children: [
-        Expanded(
-          child: (isLoading.value)
-              ? const Center(child: CircularProgressIndicator())
-              : SheaSchoolServicesCards(school: school),
-        ),
+        (isLoading.value)
+            ? const Center(child: CircularProgressIndicator())
+            : SheaSchoolServicesCards(school: school),
         Container(
           margin: const EdgeInsets.only(
             top: 18,
@@ -76,6 +75,6 @@ class SheaCampusHealth extends HookConsumerWidget {
           ),
         )
       ],
-    );
+    ));
   }
 }

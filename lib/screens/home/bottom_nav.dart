@@ -44,7 +44,7 @@ class SheaHomeBottomNav extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             label: "Profile",
-            icon: SheaProfileNavButton(),
+            icon: SheaProfileAvatar(),
           ),
         ],
       ),

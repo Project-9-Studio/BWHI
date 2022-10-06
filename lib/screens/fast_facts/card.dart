@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shea/models/fastfacts.dart';
 
@@ -10,7 +11,7 @@ class SheaFastFactCard extends StatelessWidget {
     return Container(
       width: 261,
       height: 493,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
@@ -28,23 +29,32 @@ class SheaFastFactCard extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
                 image: DecorationImage(
-                  image: NetworkImage(fact!.imageUrl!),
+                  image: CachedNetworkImageProvider(fact!.imageUrl!),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: Text(fact?.title ?? ""),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              fact?.description ?? "",
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (fact?.title != null)
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    child: Text(fact!.title!),
+                  ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    fact?.description ?? "",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );

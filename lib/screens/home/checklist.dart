@@ -118,6 +118,7 @@ class SheaChecklistItem extends HookConsumerWidget {
             ),
             checkColor: Colors.black,
             value: isSelected,
+            materialTapTargetSize: MaterialTapTargetSize.padded,
             onChanged: (val) {
               if (val != null) updateItem(item.id, val);
             },

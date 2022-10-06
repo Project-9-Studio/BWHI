@@ -20,7 +20,7 @@ class SheaOnboardHome extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 12),
             child: const Text(
-              "Campus Health App",
+              "Shea",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w700,

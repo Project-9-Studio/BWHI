@@ -20,7 +20,7 @@ class SheaFastFactsView extends HookConsumerWidget {
 
     return (factIds.isNotEmpty)
         ? Container(
-            padding: const EdgeInsets.symmetric(vertical: 64),
+            padding: const EdgeInsets.symmetric(vertical: 34),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: factIds.length,

@@ -22,6 +22,7 @@ class SheaSchoolServicesCards extends HookConsumerWidget {
             width: double.infinity,
             height: 522,
             child: Swiper(
+              loop: false,
               itemBuilder: (context, index) {
                 final serviceCenter = services[index]!;
                 return SheaSchoolServicesCard(

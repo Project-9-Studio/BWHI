@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shea/landing.dart';
 import 'package:shea/screens/create_account/create_acount.dart';
@@ -7,10 +8,12 @@ import 'package:shea/screens/create_account/name.dart';
 import 'package:shea/screens/create_account/profile_pic.dart';
 import 'package:shea/screens/create_account/select_school.dart';
 import 'package:shea/screens/home/main.dart';
+import 'package:shea/screens/notifications/main.dart';
 import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
 import 'package:shea/screens/onboarding/onboard3.dart';
+import 'package:shea/screens/profile/main.dart';
 import 'package:shea/screens/sign_in/confirm_code.dart';
 import 'package:shea/screens/sign_in/sign_in.dart';
 
@@ -22,7 +25,6 @@ class SheaApp extends StatelessWidget {
     return MaterialApp(
       title: "Shea",
       theme: ThemeData(
-        brightness: Brightness.dark,
         colorScheme: const ColorScheme.dark(background: Colors.black),
         textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme),
         fontFamily: GoogleFonts.urbanist().fontFamily,
@@ -64,6 +66,13 @@ class SheaApp extends StatelessWidget {
 
           case "home":
             return MaterialPageRoute(builder: (_) => const SheaAppHome());
+
+          case "profile":
+            return MaterialPageRoute(builder: (_) => const SheaProfileView());
+          case "notifications":
+            return MaterialPageRoute(
+              builder: (_) => const SheaNotificationsView(),
+            );
           default:
             return null;
         }
