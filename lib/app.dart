@@ -71,7 +71,7 @@ class SheaApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const SheaProfileView());
           case "notifications":
             return MaterialPageRoute(
-              builder: (_) => const SheaNotificationsView(),
+              builder: (_) => const SheaNotificationSettingsView(),
             );
           default:
             return null;

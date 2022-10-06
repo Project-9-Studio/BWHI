@@ -56,9 +56,11 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
               itemExtent: 32,
               onSelectedItemChanged: (index) {
                 if (onSelect != null && index > 0) {
-                  onSelect!(schools[index].name!);
+                  onSelect!(schools[index - 1].name!);
                   debugPrint(index.toString());
-                  updateProfile(SheaUserProfile(school: schools[index].name!));
+                  updateProfile(
+                    SheaUserProfile(school: schools[index - 1].name!),
+                  );
                 }
               },
               children: schoolWidgets,

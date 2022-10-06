@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/components/settings_appbar.dart';
 
-class SheaNotificationSettingsView extends HookConsumerWidget {
-  const SheaNotificationSettingsView({super.key});
+class SheaUserNotificationsView extends HookConsumerWidget {
+  const SheaUserNotificationsView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

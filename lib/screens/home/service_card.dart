@@ -31,10 +31,6 @@ class SheaSchoolServicesCard extends StatelessWidget {
       fontSize: 18,
       color: Colors.black,
     );
-    final cancelButton = CupertinoActionSheetAction(
-      onPressed: () => Navigator.pop(context),
-      child: const Text("Cancel"),
-    );
 
     void openMap(String mapType) async {
       if (serviceCenter.addressUrl != null) {
