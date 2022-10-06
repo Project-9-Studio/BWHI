@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:shea/models/app.dart';
 import 'package:shea/models/school.dart';
 import 'package:shea/screens/home/view_services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,6 +35,18 @@ class SheaSchoolServicesCard extends StatelessWidget {
       onPressed: () => Navigator.pop(context),
       child: const Text("Cancel"),
     );
+
+    void openMap(String mapType) async {
+      if (serviceCenter.addressUrl != null) {
+        SheaApp.openUrl(Uri.parse(serviceCenter.addressUrl!));
+        return;
+      }
+
+      if (serviceCenter.address != null) {
+        SheaApp.displayAddress(
+            address: serviceCenter.address!, mapType: mapType);
+      }
+    }
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 36),
@@ -139,12 +152,12 @@ class SheaSchoolServicesCard extends StatelessWidget {
                           builder: (context) => CupertinoActionSheet(
                             actions: [
                               CupertinoActionSheetAction(
-                                onPressed: () {},
+                                onPressed: () => openMap("apple"),
                                 isDefaultAction: true,
                                 child: const Text("Open in Maps"),
                               ),
                               CupertinoActionSheetAction(
-                                onPressed: () {},
+                                onPressed: () => openMap("google"),
                                 isDefaultAction: true,
                                 child: const Text("Open in Google Maps"),
                               ),
