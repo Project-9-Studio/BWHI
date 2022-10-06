@@ -30,22 +30,32 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <queries>
-            <!-- If your app checks for SMS support -->
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="sms" />
-            </intent>
-            <!-- If your app checks for call support -->
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="tel" />
-            </intent>
-            <!-- If your app checks for web support -->
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="http" />
-            </intent>
-    </queries>
     </application>
+
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+        <!-- If your app checks for map support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        <!-- If your app checks for web support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
 </manifest>
