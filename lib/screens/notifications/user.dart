@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/components/settings_appbar.dart';
 
@@ -11,30 +12,28 @@ class SheaUserNotificationsView extends HookConsumerWidget {
     const labelStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: const SheaSettingsAppBar(title: "Notifications"),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        iconTheme: const IconThemeData(color: Colors.white),
+        elevation: 0,
+        title: const Text(
+          "Notifications",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        leading: IconButton(
+          icon: const HeroIcon(HeroIcons.arrowLeft),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 40),
-              child: Row(
-                children: [
-                  const Text("System Notifications", style: labelStyle),
-                  const Spacer(),
-                  CupertinoSwitch(value: true, onChanged: (value) {})
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                const Text("Reminders Notifications", style: labelStyle),
-                const Spacer(),
-                CupertinoSwitch(value: true, onChanged: (value) {})
-              ],
-            ),
-          ],
+          children: [],
         ),
       ),
     );

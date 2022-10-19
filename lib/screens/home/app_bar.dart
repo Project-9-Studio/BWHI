@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:heroicons/heroicons.dart';
 
 class SheaHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -23,6 +24,14 @@ class SheaHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               'assets/images/logo.png',
               width: 24,
             ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, 'user/notifications');
+          },
+          icon: const HeroIcon(HeroIcons.bell),
+        ),
+      ],
     );
   }
 

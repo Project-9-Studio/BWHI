@@ -124,6 +124,13 @@ class SheaUserNotifier extends StateNotifier<SheaUser> {
     return state;
   }
 
+  SheaUser changeSchool({String? school}) {
+    state = state.copyWith(
+      SheaUser(profile: state.profile.changeSchool(school)),
+    );
+    return state;
+  }
+
   SheaUser setAuth(SheaUser auth) {
     state = auth;
     return state;

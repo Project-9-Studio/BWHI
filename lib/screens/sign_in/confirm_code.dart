@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shea/models/user/user.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
@@ -56,20 +56,23 @@ class SheaConfirmNumber extends HookConsumerWidget {
             style: TextStyle(fontSize: 12),
           ),
         ),
-        VerificationCode(
+        PinCodeTextField(
+          appContext: context,
+          autoFocus: true,
+          enablePinAutofill: true,
           length: 6,
-          autofocus: true,
-          digitsOnly: true,
-          isSecure: true,
-          fullBorder: true,
-          fillColor: Colors.white,
-          underlineUnfocusedColor: Colors.black,
+          keyboardType: TextInputType.number,
           cursorColor: Colors.black,
+          pinTheme: const PinTheme.defaults(
+            activeColor: Colors.black,
+            selectedColor: Colors.black,
+            inactiveColor: Colors.black,
+          ),
           onCompleted: (code) async {
             FocusManager.instance.primaryFocus?.unfocus();
             smsCode.value = code;
           },
-          onEditing: (_) {},
+          onChanged: (value) {},
         ),
         const Spacer(),
         Container(

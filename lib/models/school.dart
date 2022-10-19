@@ -169,7 +169,8 @@ class SheaSchoolState {
   }
 
   SheaSchool? getSchoolByName({String? name = ""}) {
-    return getSchoolsByName()[name];
+    final schools = getSchoolsByName();
+    return schools[name];
   }
 
   SheaSchool? getSchoolById({String id = ""}) {
@@ -193,7 +194,7 @@ class SheaSchoolState {
 class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
   SheaSchoolNotifier() : super(const SheaSchoolState());
 
-  Future<SheaSchoolState> fetchSchools() async {
+  Future<SheaSchoolState> fetchSchools({String? school}) async {
     final db = FirebaseFirestore.instance;
     final collection = await db.collection("schools").get();
     final schools = List<SheaSchool>.from(
@@ -208,6 +209,8 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
         entities:
             Map<String, SheaSchool>.fromIterable(schools, key: (e) => e.id),
       );
+
+      fetchSchoolServices(state.getSchoolByName(name: school)?.id ?? "");
     }
 
     return state;
@@ -235,6 +238,7 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
         )
       }));
     }
+
     return state;
   }
 }

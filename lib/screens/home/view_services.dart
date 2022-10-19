@@ -53,7 +53,7 @@ class SheaViewServices extends StatelessWidget {
             ),
             Spacer(),
             HeroIcon(
-              HeroIcons.arrowNarrowRight,
+              HeroIcons.arrowDownLeft,
               color: Colors.black,
             )
           ],

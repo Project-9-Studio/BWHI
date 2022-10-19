@@ -27,6 +27,16 @@ class SheaUserProfile {
     );
   }
 
+  SheaUserProfile changeSchool(String? school) {
+    return SheaUserProfile(
+      id: id,
+      name: name,
+      email: email,
+      profileImageURL: profileImageURL,
+      school: school ?? "",
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       "id": id,

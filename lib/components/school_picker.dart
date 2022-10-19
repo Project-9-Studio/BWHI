@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/models/school.dart';
-import 'package:shea/models/user/profile.dart';
 import 'package:shea/models/user/user.dart';
 
 class SheaSelectSchoolPicker extends HookConsumerWidget {
@@ -22,7 +21,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final schools = ref.watch(schoolsProvider).getSchoolsList();
     final school = ref.read(userProvider).profile.school;
-    final updateProfile = ref.read(userProvider.notifier).updateProfile;
+    final updateProfile = ref.read(userProvider.notifier).changeSchool;
     final fetchSchools = ref.read(schoolsProvider.notifier).fetchSchools;
     final value = school ?? "Select a university";
     const labelStyle = TextStyle(color: Colors.white);
@@ -30,11 +29,14 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
       const Center(child: Text("Select University", style: labelStyle)),
       ...List<Widget>.from(
         schools.map((e) => Center(child: Text(e.name!, style: labelStyle))),
-      )
+      ),
+      const Center(child: Text("I don’t see my school", style: labelStyle)),
+      const Center(child: Text("I’m not in school", style: labelStyle)),
     ];
 
     useEffect(() {
-      fetchSchools();
+      fetchSchools(school: school);
+      return;
     }, []);
 
     void showDialog() {
@@ -55,13 +57,10 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
             child: CupertinoPicker(
               itemExtent: 32,
               onSelectedItemChanged: (index) {
-                if (onSelect != null && index > 0) {
-                  onSelect!(schools[index - 1].name!);
-                  debugPrint(index.toString());
-                  updateProfile(
-                    SheaUserProfile(school: schools[index - 1].name!),
-                  );
-                }
+                final school = (index > 0 && index <= schools.length)
+                    ? schools[index - 1].name
+                    : null;
+                updateProfile(school: school);
               },
               children: schoolWidgets,
             ),

@@ -9,6 +9,7 @@ import 'package:shea/screens/create_account/profile_pic.dart';
 import 'package:shea/screens/create_account/select_school.dart';
 import 'package:shea/screens/home/main.dart';
 import 'package:shea/screens/notifications/main.dart';
+import 'package:shea/screens/notifications/user.dart';
 import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
@@ -72,6 +73,10 @@ class SheaApp extends StatelessWidget {
           case "notifications":
             return MaterialPageRoute(
               builder: (_) => const SheaNotificationSettingsView(),
+            );
+          case "user/notifications":
+            return MaterialPageRoute(
+              builder: (_) => const SheaUserNotificationsView(),
             );
           default:
             return null;

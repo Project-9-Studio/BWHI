@@ -70,5 +70,7 @@
 		<string>tel</string>
 		<string>http</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Add reminders to calendar.</string>
 </dict>
 </plist>

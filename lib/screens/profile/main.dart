@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shea/components/profile_nav_button.dart';
+import 'package:shea/components/profile_avatar.dart';
 import 'package:shea/components/settings_appbar.dart';
 import 'package:shea/components/text_input.dart';
 import 'package:shea/models/user/profile.dart';
@@ -22,19 +22,20 @@ class SheaProfileView extends HookConsumerWidget {
       appBar: SheaSettingsAppBar(
         title: "Profile",
         actions: [
-          TextButton(
-            onPressed: () {
-              isEditing.value = !isEditing.value;
-            },
-            child: Text(
-              (isEditing.value) ? "Save" : "Edit",
-              style: const TextStyle(
-                fontSize: 18,
-                color: Color(0xFF0F4C82),
-                fontWeight: FontWeight.w700,
+          if (!isEditing.value)
+            TextButton(
+              onPressed: () {
+                isEditing.value = !isEditing.value;
+              },
+              child: const Text(
+                "Edit",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Color(0xFF0F4C82),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -45,7 +46,7 @@ class SheaProfileView extends HookConsumerWidget {
             Container(
               width: double.infinity,
               margin: const EdgeInsets.only(bottom: 40),
-              child: const SheaProfileAvatar(width: 100, height: 100),
+              child: const SheaEditProfileAvatar(width: 100, height: 100),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 30),
@@ -74,6 +75,13 @@ class SheaProfileView extends HookConsumerWidget {
               label: "Phone Number",
               enabled: false,
             ),
+            if (isEditing.value)
+              TextButton(
+                onPressed: () {
+                  isEditing.value = false;
+                },
+                child: const Text("Save"),
+              ),
           ],
         ),
       ),

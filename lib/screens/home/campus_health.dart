@@ -13,30 +13,23 @@ class SheaCampusHealth extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(userProvider).profile;
     final getSchoolByName = ref.watch(schoolsProvider).getSchoolByName;
-    final fetchSchools = ref.read(schoolsProvider.notifier).fetchSchools;
-    final fetchSchoolServices =
-        ref.read(schoolsProvider.notifier).fetchSchoolServices;
     final school = getSchoolByName(name: profile.school) ?? const SheaSchool();
-    final isLoading = useState(true);
+    final fetchSchools = ref.read(schoolsProvider.notifier).fetchSchools;
 
     useEffect(() {
-      fetchSchools()
-          .then(
-            (state) => fetchSchoolServices(
-              getSchoolByName(name: profile.school)?.id ?? "",
-            ),
-          )
-          .then((value) => isLoading.value = false);
+      if (profile.school != null &&
+          profile.school!.isNotEmpty &&
+          school.services.isEmpty) {
+        fetchSchools(school: profile.school);
+      }
       return;
-    }, [school.id]);
+    }, [profile.school]);
 
     return SingleChildScrollView(
         child: Column(
       children: [
-        (isLoading.value)
-            ? const Center(child: CircularProgressIndicator())
-            : SheaSchoolServicesCards(school: school),
-        Container(
+        SheaSchoolServicesCards(school: school),
+        /* Container(
           margin: const EdgeInsets.only(
             top: 18,
             left: 12,
@@ -73,7 +66,7 @@ class SheaCampusHealth extends HookConsumerWidget {
               ],
             ),
           ),
-        )
+        )*/
       ],
     ));
   }

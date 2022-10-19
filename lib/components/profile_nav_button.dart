@@ -19,7 +19,7 @@ class SheaProfileAvatar extends HookConsumerWidget {
       height: h,
       child: CircleAvatar(
         backgroundColor: Colors.grey,
-        backgroundImage: (hasImage)
+        foregroundImage: (hasImage)
             ? NetworkImage(profile.profileImageURL!, scale: 1)
             : null,
         child: (!hasImage)

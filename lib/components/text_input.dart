@@ -22,6 +22,7 @@ class SheaTextInput extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isEnabled = enabled != null && enabled!;
     const labelBorderColor = Color.fromARGB(140, 0, 0, 0);
     final textController = useTextEditingController(text: initialValue);
     textController.selection = TextSelection.collapsed(
@@ -47,14 +48,17 @@ class SheaTextInput extends HookConsumerWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: labelBorderColor,
-              width: 1,
-            ),
-          ),
+          padding:
+              (isEnabled) ? const EdgeInsets.symmetric(horizontal: 12) : null,
+          decoration: (isEnabled)
+              ? BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: labelBorderColor,
+                    width: 1,
+                  ),
+                )
+              : null,
           child: TextField(
             keyboardType: keyboardType,
             onChanged: onChanged,
