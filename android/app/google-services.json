@@ -1,73 +1,37 @@
 {
   "project_info": {
-    "project_number": "487471929955",
-    "project_id": "shea-ac999",
-    "storage_bucket": "shea-ac999.appspot.com"
+    "project_number": "649790097367",
+    "project_id": "ooot-bwhi",
+    "storage_bucket": "ooot-bwhi.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487471929955:android:1d00712bcae98631a47656",
+        "mobilesdk_app_id": "1:649790097367:android:98d8756c2014b8e63b6d92",
         "android_client_info": {
-          "package_name": "com.project9.shea"
+          "package_name": "com.project9.bwhi.shea"
         }
       },
       "oauth_client": [
         {
-          "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
+          "client_id": "649790097367-jtln016v41ecqojj921202o0n6qsc44o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4"
+          "current_key": "AIzaSyAMsecEU5FHg16VL-Z-mRu6B0FJKHBqZi8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
+              "client_id": "649790097367-jtln016v41ecqojj921202o0n6qsc44o.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.project9.shea"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:487471929955:android:d40b12a9af21d8dda47656",
-        "android_client_info": {
-          "package_name": "com.project9.shea"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487471929955-0jhk0uv2t40v87v7r7h1vqiuuqnre7rn.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com",
+              "client_id": "649790097367-8q8c26t2179164doqo9psmncaalbi5ja.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.project9.shea"

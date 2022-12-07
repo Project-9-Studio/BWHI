@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:shea/components/school_picker.dart';
 import 'package:shea/screens/settings/nav_item.dart';

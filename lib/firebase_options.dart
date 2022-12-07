@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,42 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDoUCv7MgTAIajA8-0icQx54XpgMXbOiqc',
-    appId: '1:487471929955:web:92d00e57228c9f5fa47656',
-    messagingSenderId: '487471929955',
-    projectId: 'shea-ac999',
-    authDomain: 'shea-ac999.firebaseapp.com',
-    storageBucket: 'shea-ac999.appspot.com',
-    measurementId: 'G-RG3PFP01PE',
+    apiKey: 'AIzaSyBO3sJWuQBKiyNbKHjUt4Dj3DRfGQIPGts',
+    appId: '1:649790097367:web:d052e30a30360a963b6d92',
+    messagingSenderId: '649790097367',
+    projectId: 'ooot-bwhi',
+    authDomain: 'ooot-bwhi.firebaseapp.com',
+    storageBucket: 'ooot-bwhi.appspot.com',
+    measurementId: 'G-5DR3H23HBD',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD3DO4yog6ZwlF6MxsQCz4q6ErkcUjKfC4',
-    appId: '1:487471929955:android:d40b12a9af21d8dda47656',
-    messagingSenderId: '487471929955',
-    projectId: 'shea-ac999',
-    storageBucket: 'shea-ac999.appspot.com',
+    apiKey: 'AIzaSyAMsecEU5FHg16VL-Z-mRu6B0FJKHBqZi8',
+    appId: '1:649790097367:android:98d8756c2014b8e63b6d92',
+    messagingSenderId: '649790097367',
+    projectId: 'ooot-bwhi',
+    storageBucket: 'ooot-bwhi.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDglwpZ7m4mvzJnP7NDVacgsRRZMQQuvsc',
-    appId: '1:487471929955:ios:2c39c806a585f6e0a47656',
-    messagingSenderId: '487471929955',
-    projectId: 'shea-ac999',
-    storageBucket: 'shea-ac999.appspot.com',
-    androidClientId: '487471929955-ckbeihpalv7p2uhvqu4l5nbcs37ro9j0.apps.googleusercontent.com',
-    iosClientId: '487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d.apps.googleusercontent.com',
-    iosBundleId: 'com.project9.shea',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDglwpZ7m4mvzJnP7NDVacgsRRZMQQuvsc',
-    appId: '1:487471929955:ios:aae3d2bf72602385a47656',
-    messagingSenderId: '487471929955',
-    projectId: 'shea-ac999',
-    storageBucket: 'shea-ac999.appspot.com',
-    androidClientId: '487471929955-ckbeihpalv7p2uhvqu4l5nbcs37ro9j0.apps.googleusercontent.com',
-    iosClientId: '487471929955-vidgftdrr9pu59tm1e4r2qgts8i9lhc0.apps.googleusercontent.com',
-    iosBundleId: 'com.example.shea',
+    apiKey: 'AIzaSyAgQApGzZR4B6Gjz9uOR1z5TPzqvqvy4_k',
+    appId: '1:649790097367:ios:bd8d4bc73f3aabca3b6d92',
+    messagingSenderId: '649790097367',
+    projectId: 'ooot-bwhi',
+    storageBucket: 'ooot-bwhi.appspot.com',
+    iosClientId: '649790097367-tpflcb8qfgihl9fm76u58fgo7tfh3bbb.apps.googleusercontent.com',
+    iosBundleId: 'com.project9.bwhi.shea',
   );
 }

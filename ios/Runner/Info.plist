@@ -29,14 +29,22 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.487471929955-ga17kt1tv9bnskln2oo1r0tn06uemd7d</string>
+				<string>com.googleusercontent.apps.649790097367-tpflcb8qfgihl9fm76u58fgo7tfh3bbb</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+		<string>http</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Add reminders to calendar.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires access to the camera.</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -64,13 +72,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>sms</string>
-		<string>tel</string>
-		<string>http</string>
-	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Add reminders to calendar.</string>
 </dict>
 </plist>

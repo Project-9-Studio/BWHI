@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shea/landing.dart';
 import 'package:shea/screens/create_account/create_acount.dart';

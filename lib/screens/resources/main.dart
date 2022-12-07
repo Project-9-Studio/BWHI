@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shea/models/fastfacts.dart';
 import 'package:shea/models/resources.dart';
-import 'package:shea/screens/fast_facts/card.dart';
 import 'package:shea/screens/resources/resource.dart';
 
 class SheaResourcesView extends HookConsumerWidget {

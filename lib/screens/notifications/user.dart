@@ -1,16 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shea/components/settings_appbar.dart';
 
 class SheaUserNotificationsView extends HookConsumerWidget {
   const SheaUserNotificationsView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const labelStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
-
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -32,9 +28,7 @@ class SheaUserNotificationsView extends HookConsumerWidget {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-        child: Column(
-          children: [],
-        ),
+        child: Column(),
       ),
     );
   }

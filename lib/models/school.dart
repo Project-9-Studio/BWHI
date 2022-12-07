@@ -16,8 +16,8 @@ class SheaSchool {
   static SheaSchool fromJson(Map<String, dynamic> data) {
     return SheaSchool(
       id: data["id"],
-      name: data["name"],
-      address: data["address"],
+      name: data["school_name"],
+      address: data["school_address"],
       services: data["services"] ?? {},
     );
   }
