@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shea/screens/onboarding/layout.dart';
 import 'package:shea/components/primary_button.dart';
 
-class SheaOnboardHome extends StatelessWidget {
-  const SheaOnboardHome({Key? key}) : super(key: key);
+class SheaOnboardIntro extends StatelessWidget {
+  const SheaOnboardIntro({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class SheaOnboardHome extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(bottom: 40, top: 100),
+            margin: const EdgeInsets.only(bottom: 40),
             child: const Image(
               image: AssetImage('assets/images/intro01.png'),
             ),
@@ -20,7 +20,7 @@ class SheaOnboardHome extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 12),
             child: const Text(
-              "Welcome to SHEA",
+              "Taking Charge",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
@@ -30,7 +30,7 @@ class SheaOnboardHome extends StatelessWidget {
             ),
           ),
           const Text(
-            "Sistas Health Education Access",
+            "We get it Sis!  Being a college student, is a lot. But prioritizing your health should be a non negotiable!",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.black, fontSize: 18),
           ),
@@ -38,7 +38,7 @@ class SheaOnboardHome extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 5),
             child: SheaPrimaryButton(
-              text: "Get Started",
+              text: "Next",
               textColor: Colors.white,
               onPressed: () {
                 Navigator.pushNamed(context, 'onboard/1');

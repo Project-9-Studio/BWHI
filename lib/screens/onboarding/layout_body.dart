@@ -68,7 +68,7 @@ class SheaOnboardBody extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 40, bottom: 20),
             child: DotsIndicator(
-              dotsCount: 3,
+              dotsCount: 5,
               position: activeProgress ?? 0,
               decorator: const DotsDecorator(
                 color: Colors.white, // Inactive color

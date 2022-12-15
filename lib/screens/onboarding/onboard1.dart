@@ -6,6 +6,13 @@ import 'package:shea/screens/onboarding/layout_body.dart';
 
 final onboardingData = [
   {
+    "image": const Image(image: AssetImage('assets/images/intro00.png')),
+    "title": "Taking Charge",
+    "subtitle":
+        "Need to access care? Simply select your campus and be directed to a list of health services - from sexual health to mental health to crisis management.",
+    "btnText": "Next",
+  },
+  {
     "image": const Image(image: AssetImage('assets/images/intro02.png')),
     "title": "You are Here!",
     "subtitle":
@@ -13,10 +20,17 @@ final onboardingData = [
     "btnText": "Next",
   },
   {
-    "image": const Image(image: AssetImage("assets/images/intro03.png")),
-    "title": "Help a Sister Out!",
+    "image": const Image(image: AssetImage("assets/images/beAccountable.png")),
+    "title": "Be Accountable",
     "subtitle":
-        "Student health and counseling centers are there for you - providing an array of important services to help you manage your health.",
+        "The daily checklist encourages discipline and appreciation of some important habits to help you live your best life.",
+    "btnText": "Next",
+  },
+  {
+    "image": const Image(image: AssetImage("assets/images/intro03.png")),
+    "title": "We got you",
+    "subtitle":
+        "We’ve pulled together a list of some really important information and resources to help you manage your health.",
     "btnText": "Next",
   },
   {
@@ -52,12 +66,15 @@ class SheaOnboard1 extends HookConsumerWidget {
           switch (activeIndex.value) {
             case 0:
             case 1:
+            case 2:
+            case 3:
               {
                 activeIndex.value += 1;
               }
               break;
-            case 2:
+            case 4:
               Navigator.pushNamed(context, 'createAccount');
+              break;
           }
         },
       ),

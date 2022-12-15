@@ -13,6 +13,7 @@ import 'package:shea/screens/onboarding/main.dart';
 import 'package:shea/screens/onboarding/onboard1.dart';
 import 'package:shea/screens/onboarding/onboard2.dart';
 import 'package:shea/screens/onboarding/onboard3.dart';
+import 'package:shea/screens/onboarding/onboarding.dart';
 import 'package:shea/screens/profile/main.dart';
 import 'package:shea/screens/sign_in/confirm_code.dart';
 import 'package:shea/screens/sign_in/sign_in.dart';
@@ -34,6 +35,8 @@ class SheaApp extends StatelessWidget {
         switch (settings.name) {
           case "onboard":
             return MaterialPageRoute(builder: (_) => const SheaOnboardHome());
+          case "onboard/intro":
+            return MaterialPageRoute(builder: (_) => const SheaOnboardIntro());
           case "onboard/1":
             return MaterialPageRoute(builder: (_) => const SheaOnboard1());
           case "onboard/2":
