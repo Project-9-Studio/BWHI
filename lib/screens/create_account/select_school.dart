@@ -20,7 +20,8 @@ class SheaSelectSchool extends HookConsumerWidget {
     final isLoading = useState(false);
     const loader = Center(child: CircularProgressIndicator());
 
-    void navigateHome() => Navigator.pushNamed(context, 'home');
+    void navigateHome() =>
+        Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
 
     void onContinue() async {
       try {

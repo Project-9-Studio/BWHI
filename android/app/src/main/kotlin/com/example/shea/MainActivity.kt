@@ -1,4 +1,4 @@
-package com.example.shea
+package com.project9.bwhi.shea
 
 import io.flutter.embedding.android.FlutterActivity
 

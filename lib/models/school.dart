@@ -218,7 +218,11 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
 
   Future<SheaSchoolState> fetchSchoolServices(String id) async {
     final db = FirebaseFirestore.instance;
-    final collection = await db.collectionGroup("serviceCenters").get();
+    final collection = await db
+        .collection("schools")
+        .doc(id)
+        .collection("serviceCenters")
+        .get();
     final services = List<SheaServiceCenter>.from(
       collection.docs.map(
         (e) => SheaServiceCenter.fromJson(e.data()),

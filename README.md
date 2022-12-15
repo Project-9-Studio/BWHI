@@ -1,4 +1,4 @@
-# shea
+# SHEA
 
 A new Flutter project.
 

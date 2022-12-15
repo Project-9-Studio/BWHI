@@ -59,7 +59,7 @@ class SheaSignIn extends HookConsumerWidget {
             text: "Continue",
             onPressed: () async {
               PhoneNumber phoneNumber =
-                  await PhoneNumberUtil().parse(phoneController.text);
+                  await PhoneNumberUtil().parse("+1${phoneController.text}");
 
               await FirebaseAuth.instance.verifyPhoneNumber(
                 phoneNumber: phoneNumber.international,
