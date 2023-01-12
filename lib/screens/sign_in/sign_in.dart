@@ -28,6 +28,10 @@ class SheaSignIn extends HookConsumerWidget {
       return;
     }, []);
 
+    void navigateHome() {
+      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
+    }
+
     return SheaCreateAccountLayout(
       child: Column(children: [
         Container(
@@ -71,7 +75,11 @@ class SheaSignIn extends HookConsumerWidget {
                 await FirebaseAuth.instance.verifyPhoneNumber(
                   phoneNumber: phoneNumber.international,
                   verificationCompleted:
-                      (PhoneAuthCredential credential) async {},
+                      (PhoneAuthCredential credential) async {
+                    await FirebaseAuth.instance
+                        .signInWithCredential(credential);
+                    navigateHome();
+                  },
                   verificationFailed: (FirebaseAuthException e) {
                     isLoading.value = false;
                     // Show error

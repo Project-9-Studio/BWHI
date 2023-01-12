@@ -161,7 +161,8 @@ class SheaSchoolState {
   }
 
   List<SheaSchool> getSchoolsList() {
-    return List.from(entities.values);
+    final List<SheaSchool> list = List.from(entities.values);
+    return list;
   }
 
   Map<String, SheaSchool> getSchoolsByName() {

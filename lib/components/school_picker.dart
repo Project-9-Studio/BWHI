@@ -26,6 +26,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
     final fetchSchools = ref.read(schoolsProvider.notifier).fetchSchools;
     final value = school ?? "Select a university";
     const labelStyle = TextStyle(color: Colors.white);
+    schools.sort((a, b) => a.name!.compareTo(b.name!));
     final List<Widget> schoolWidgets = [
       const Center(child: Text("Select University", style: labelStyle)),
       ...List<Widget>.from(
@@ -86,9 +87,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
       height: 55,
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 1, color: Colors.black),
-        ),
+        border: Border(bottom: BorderSide(width: 1, color: Colors.black)),
       ),
       child: Row(
         children: [
