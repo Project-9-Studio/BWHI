@@ -19,6 +19,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final noSchoolValue = useState("Select a university");
     final schools = ref.watch(schoolsProvider).getSchoolsList();
     final school = ref.read(userProvider).profile.school;
     final updateProfile = ref.read(userProvider.notifier).changeSchool;
@@ -61,6 +62,17 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
                     ? schools[index - 1].name
                     : null;
                 updateProfile(school: school);
+                if (school == null) {
+                  if (index == 0) {
+                    noSchoolValue.value = "Select a university";
+                  } else if (index == schoolWidgets.length - 1) {
+                    noSchoolValue.value = "I'm not in school";
+                  } else if (index == schoolWidgets.length - 2) {
+                    noSchoolValue.value = "I don't see my school";
+                  }
+                } else {
+                  noSchoolValue.value = "";
+                }
               },
               children: schoolWidgets,
             ),
@@ -83,7 +95,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
           Expanded(
             child: Center(
               child: Text(
-                value,
+                (noSchoolValue.value.isNotEmpty) ? noSchoolValue.value : value,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 24,

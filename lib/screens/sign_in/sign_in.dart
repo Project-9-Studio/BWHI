@@ -12,6 +12,7 @@ class SheaSignIn extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = useState(false);
     final phoneUtil = PhoneNumberUtil();
     final regionCode = useState("US");
     final phoneController = PhoneNumberEditingController(
@@ -52,42 +53,55 @@ class SheaSignIn extends HookConsumerWidget {
           ),
           keyboardType: TextInputType.phone,
         ),
-        const Spacer(),
+        Expanded(
+          child: (isLoading.value)
+              ? const Center(child: CircularProgressIndicator())
+              : Container(),
+        ),
         Container(
           margin: const EdgeInsets.only(bottom: 20),
           child: SheaPrimaryButton(
             text: "Continue",
             onPressed: () async {
-              PhoneNumber phoneNumber =
-                  await PhoneNumberUtil().parse("+1${phoneController.text}");
+              try {
+                isLoading.value = true;
+                PhoneNumber phoneNumber =
+                    await PhoneNumberUtil().parse("+1${phoneController.text}");
 
-              await FirebaseAuth.instance.verifyPhoneNumber(
-                phoneNumber: phoneNumber.international,
-                verificationCompleted:
-                    (PhoneAuthCredential credential) async {},
-                verificationFailed: (FirebaseAuthException e) {
-                  // Show error
-                  if (e.code == 'invalid-phone-number') {
-                    debugPrint('The provided phone number is not valid.');
-                    return;
-                  }
-                  debugPrint("Error: ${e.toString()}");
-                },
-                codeSent: (String verificationId, int? resendToken) async {
-                  Navigator.pushNamed(
-                    context,
-                    SheaConfirmNumber.routeName,
-                    arguments: SheaConfirmNumberArgs(
-                      verificationId: verificationId,
-                      resendToken: resendToken,
-                    ),
-                  );
-                },
-                codeAutoRetrievalTimeout: (String verificationId) {
-                  // Timedout
-                  debugPrint("Timeout: $verificationId");
-                },
-              );
+                await FirebaseAuth.instance.verifyPhoneNumber(
+                  phoneNumber: phoneNumber.international,
+                  verificationCompleted:
+                      (PhoneAuthCredential credential) async {},
+                  verificationFailed: (FirebaseAuthException e) {
+                    isLoading.value = false;
+                    // Show error
+                    if (e.code == 'invalid-phone-number') {
+                      debugPrint('The provided phone number is not valid.');
+                      return;
+                    }
+                    debugPrint("Error: ${e.toString()}");
+                  },
+                  codeSent: (String verificationId, int? resendToken) async {
+                    Navigator.pushNamed(
+                      context,
+                      SheaConfirmNumber.routeName,
+                      arguments: SheaConfirmNumberArgs(
+                        verificationId: verificationId,
+                        resendToken: resendToken,
+                      ),
+                    );
+                    isLoading.value = false;
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) {
+                    isLoading.value = false;
+                    // Timedout
+                    debugPrint("Timeout: $verificationId");
+                  },
+                );
+              } catch (e) {
+                isLoading.value = false;
+                debugPrint(e.toString());
+              }
             },
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shea/models/app.dart';
 import 'package:shea/models/user/user.dart';
@@ -40,14 +41,22 @@ class SheaProfilePic extends HookConsumerWidget {
         GestureDetector(
           onTap: onProfileTap,
           child: CircleAvatar(
-              backgroundColor: const Color(0xffECECEC),
-              maxRadius: 75,
-              foregroundImage:
-                  (!isLoading.value && profile.profileImageURL != null)
-                      ? NetworkImage(profile.profileImageURL!)
-                      : null,
-              child:
-                  (isLoading.value) ? const CircularProgressIndicator() : null),
+            backgroundColor: const Color(0xffECECEC),
+            maxRadius: 75,
+            foregroundImage:
+                (!isLoading.value && profile.profileImageURL != null)
+                    ? NetworkImage(profile.profileImageURL!)
+                    : null,
+            child: (isLoading.value)
+                ? const CircularProgressIndicator()
+                : (profile.profileImageURL == null)
+                    ? const HeroIcon(
+                        HeroIcons.camera,
+                        size: 50,
+                        color: Colors.grey,
+                      )
+                    : null,
+          ),
         ),
         const Spacer(),
         GestureDetector(

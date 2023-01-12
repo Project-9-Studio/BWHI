@@ -210,7 +210,9 @@ class SheaSchoolNotifier extends StateNotifier<SheaSchoolState> {
             Map<String, SheaSchool>.fromIterable(schools, key: (e) => e.id),
       );
 
-      fetchSchoolServices(state.getSchoolByName(name: school)?.id ?? "");
+      if (school != null && school.isNotEmpty) {
+        fetchSchoolServices(state.getSchoolByName(name: school)?.id ?? "");
+      }
     }
 
     return state;

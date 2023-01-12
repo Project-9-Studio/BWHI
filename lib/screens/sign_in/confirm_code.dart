@@ -27,6 +27,7 @@ class SheaConfirmNumber extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = useState(false);
     final smsCode = useState("");
     final confirmCode = ref.read(userProvider.notifier).confirmCode;
 
@@ -35,6 +36,7 @@ class SheaConfirmNumber extends HookConsumerWidget {
     }
 
     void submitCode() async {
+      isLoading.value = true;
       final auth = await confirmCode(verificationId, smsCode.value);
       final path = (auth.profile.id != null) ? 'home' : 'createAccount/name';
       navigateAway(path);
@@ -74,7 +76,11 @@ class SheaConfirmNumber extends HookConsumerWidget {
           },
           onChanged: (value) {},
         ),
-        const Spacer(),
+        Expanded(
+          child: (isLoading.value)
+              ? const Center(child: CircularProgressIndicator())
+              : Container(),
+        ),
         Container(
           margin: const EdgeInsets.only(bottom: 20),
           child: SheaPrimaryButton(

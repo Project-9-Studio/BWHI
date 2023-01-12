@@ -17,32 +17,34 @@ class SheaAppHomeView extends HookConsumerWidget {
       fontWeight: FontWeight.w600,
     );
 
-    return DefaultTabController(
-      length: hasSchool ? 2 : 1,
-      child: Column(
-        children: [
-          Container(
-            color: Colors.black,
-            child: TabBar(
-              labelStyle: labelStyle,
-              unselectedLabelStyle: labelStyle,
-              indicatorColor: Colors.white,
-              tabs: [
-                const Tab(icon: Text("Checklist")),
-                if (hasSchool) const Tab(icon: Text("Campus Health")),
-              ],
-            ),
-          ),
-          Expanded(
-            child: TabBarView(
+    return (hasSchool)
+        ? DefaultTabController(
+            length: 2,
+            child: Column(
               children: [
-                const SheaDailyChecklist(),
-                if (hasSchool) const SheaCampusHealth(),
+                Container(
+                  color: Colors.black,
+                  child: TabBar(
+                    labelStyle: labelStyle,
+                    unselectedLabelStyle: labelStyle,
+                    indicatorColor: Colors.white,
+                    tabs: const [
+                      Tab(icon: Text("Checklist")),
+                      Tab(icon: Text("Campus Health")),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      const SheaDailyChecklist(),
+                      if (hasSchool) const SheaCampusHealth(),
+                    ],
+                  ),
+                )
               ],
             ),
           )
-        ],
-      ),
-    );
+        : const SheaDailyChecklist();
   }
 }
