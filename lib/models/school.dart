@@ -1,7 +1,9 @@
 // Shea Schools
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shea/models/user/user.dart';
 
 @immutable
 class SheaSchool {
@@ -20,6 +22,17 @@ class SheaSchool {
       address: data["school_address"],
       services: data["services"] ?? {},
     );
+  }
+
+  static Future<void> submitSchool(String school, SheaUser user) async {
+    final db = FirebaseFirestore.instance;
+    final schoolValue = school.toLowerCase();
+    await db.collection("schoolRequets").doc(schoolValue).set({
+      "school": schoolValue,
+      "userId": user.profile.id,
+      "userName": user.profile.name,
+      "requestedAt": DateTime.now().millisecondsSinceEpoch.toString(),
+    });
   }
 
   SheaSchool copyWith(SheaSchool school) {

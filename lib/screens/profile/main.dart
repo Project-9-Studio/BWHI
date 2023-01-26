@@ -38,8 +38,9 @@ class SheaProfileView extends HookConsumerWidget {
             ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+      body: Container(
+        height: double.infinity,
+        padding: const EdgeInsets.only(left: 32, right: 32, bottom: 75),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -75,12 +76,30 @@ class SheaProfileView extends HookConsumerWidget {
               label: "Phone Number",
               enabled: false,
             ),
+            const Spacer(),
             if (isEditing.value)
-              TextButton(
-                onPressed: () {
-                  isEditing.value = false;
-                },
-                child: const Text("Save"),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFC41C),
+                    padding: const EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    isEditing.value = false;
+                  },
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ),
           ],
         ),

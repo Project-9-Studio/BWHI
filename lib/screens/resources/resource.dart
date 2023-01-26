@@ -17,7 +17,7 @@ class SheaResourceLink extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(12),
-        margin: const EdgeInsets.only(bottom: 12),
+        margin: const EdgeInsets.symmetric(vertical: 6),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),

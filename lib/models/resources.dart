@@ -7,11 +7,13 @@ class SheaResource {
   final String? id;
   final String? name;
   final String? url;
+  final String? topic;
 
   const SheaResource({
     this.id,
     this.name,
     this.url,
+    this.topic,
   });
 
   static fromJson(Map<String, dynamic> data) {
@@ -19,6 +21,7 @@ class SheaResource {
       id: data["id"],
       name: data["name"],
       url: data["url"],
+      topic: data["topic"],
     );
   }
 }
@@ -26,11 +29,23 @@ class SheaResource {
 class SheaResourcesState {
   final List<String> ids;
   final Map<String, SheaResource> entities;
+  final String? active;
 
-  const SheaResourcesState({this.ids = const [], this.entities = const {}});
+  const SheaResourcesState({
+    this.ids = const [],
+    this.entities = const {},
+    this.active,
+  });
 
   SheaResource? getResource(String id) {
     return entities[id];
+  }
+
+  List<String> getTopics() {
+    final topics =
+        ids.map((id) => getResource(id)?.topic ?? "").toSet().toList();
+    topics.sort();
+    return topics;
   }
 }
 
@@ -54,6 +69,15 @@ class SheaResourcesNotifier extends StateNotifier<SheaResourcesState> {
       );
     }
 
+    return state;
+  }
+
+  SheaResourcesState setActiveFilter(String? filterId) {
+    state = SheaResourcesState(
+      ids: state.ids,
+      entities: state.entities,
+      active: filterId,
+    );
     return state;
   }
 }

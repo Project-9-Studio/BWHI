@@ -39,17 +39,21 @@ class SheaEditProfileAvatar extends HookConsumerWidget {
       child: SizedBox(
         width: w,
         height: h,
-        child: CircleAvatar(
-          backgroundColor: const Color(0xffECECEC),
-          maxRadius: 75,
-          foregroundImage: (!isSaving.value && profile.profileImageURL != null)
-              ? NetworkImage(profile.profileImageURL!)
-              : null,
-          child: (isSaving.value)
-              ? const CircularProgressIndicator()
-              : (!hasImage)
-                  ? Center(child: Text(profile.name?.substring(0, 1) ?? "#"))
-                  : null,
+        child: FittedBox(
+          fit: BoxFit.fitHeight,
+          child: CircleAvatar(
+            backgroundColor: const Color(0xffECECEC),
+            maxRadius: 75,
+            foregroundImage:
+                (!isSaving.value && profile.profileImageURL != null)
+                    ? NetworkImage(profile.profileImageURL!)
+                    : null,
+            child: (isSaving.value)
+                ? const CircularProgressIndicator()
+                : (!hasImage)
+                    ? Center(child: Text(profile.name?.substring(0, 1) ?? "#"))
+                    : null,
+          ),
         ),
       ),
     );

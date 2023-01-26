@@ -9,7 +9,7 @@ final onboardingData = [
     "image": const Image(image: AssetImage('assets/images/intro00.png')),
     "title": "Taking Charge",
     "subtitle":
-        "Need to access care? Simply select your campus and be directed to a list of health services - from sexual health to mental health to crisis management.",
+        "We get it Sis!  Being a college student, is a lot. But prioritizing your health should be a non negotiable!",
     "btnText": "Next",
   },
   {

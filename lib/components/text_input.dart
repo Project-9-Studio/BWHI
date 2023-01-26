@@ -30,7 +30,9 @@ class SheaTextInput extends HookConsumerWidget {
     );
 
     textController.addListener(() {
-      if (onChanged != null) onChanged!(textController.value.text);
+      if (onChanged != null && textController.text != initialValue) {
+        onChanged!(textController.value.text);
+      }
     });
 
     return Column(
@@ -47,23 +49,25 @@ class SheaTextInput extends HookConsumerWidget {
             ),
           ),
         ),
-        Container(
-          padding:
-              (isEnabled) ? const EdgeInsets.symmetric(horizontal: 12) : null,
-          decoration: (isEnabled)
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: labelBorderColor,
-                    width: 1,
-                  ),
-                )
-              : null,
-          child: TextField(
-            keyboardType: keyboardType,
-            onChanged: onChanged,
-            controller: textController,
-            enabled: enabled,
+        TextField(
+          keyboardType: keyboardType,
+          onChanged: onChanged,
+          controller: textController,
+          enabled: enabled,
+          style: const TextStyle(fontSize: 22),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 17,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            focusColor: Colors.red,
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
         ),
       ],
