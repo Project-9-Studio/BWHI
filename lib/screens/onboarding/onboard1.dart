@@ -50,18 +50,18 @@ class SheaOnboard1 extends HookConsumerWidget {
     final activeIndex = useState(0);
 
     return SheaOnboardLayout(
+      onForwardSwipe: () {
+        if (activeIndex.value > 0) activeIndex.value -= 1;
+      },
+      onBackSwipe: () {
+        if (activeIndex.value < 4) activeIndex.value += 1;
+      },
       child: SheaOnboardBody(
         image: onboardingData[activeIndex.value]["image"] as Widget,
         title: onboardingData[activeIndex.value]["title"] as String,
         subtitle: onboardingData[activeIndex.value]["subtitle"] as String,
         btnText: onboardingData[activeIndex.value]["btnText"] as String,
         activeProgress: double.parse(activeIndex.value.toString()),
-        onForwardSwipe: () {
-          if (activeIndex.value > 0) activeIndex.value -= 1;
-        },
-        onBackSwipe: () {
-          if (activeIndex.value < 2) activeIndex.value += 1;
-        },
         onNextPress: () {
           switch (activeIndex.value) {
             case 0:

@@ -26,7 +26,7 @@ class NewSchoolForm extends HookConsumerWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 40),
             child: const Text(
-              "Enter your schools's name",
+              "Enter your school's name",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,

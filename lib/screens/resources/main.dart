@@ -10,12 +10,17 @@ class SheaResourcesView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final resourceState = ref.watch(resourcesProvider);
+    final resourceTopics = resourceState.getTopics();
+    final activeTopic = (resourceState.active != null)
+        ? resourceState.active
+        : (resourceTopics.isNotEmpty)
+            ? resourceTopics[0]
+            : null;
     final resourceIds = resourceState.ids.where((element) {
-      return (resourceState.active != null)
-          ? resourceState.entities[element]?.topic == resourceState.active
+      return (activeTopic != null)
+          ? resourceState.entities[element]?.topic == activeTopic
           : true;
     }).toList();
-    final resourceTopics = resourceState.getTopics();
     final getResource = ref.read(resourcesProvider).getResource;
     final fetchResources = ref.read(resourcesProvider.notifier).fetchResources;
     final setActiveFilter =
@@ -37,13 +42,11 @@ class SheaResourcesView extends HookConsumerWidget {
                   itemCount: resourceTopics.length,
                   itemBuilder: ((context, index) {
                     final topic = resourceTopics[index];
-                    final isActive =
-                        resourceTopics[index] == resourceState.active;
+                    final isActive = resourceTopics[index] == activeTopic;
 
                     return GestureDetector(
                       onTap: () {
-                        final activeIndex = (isActive) ? null : topic;
-                        setActiveFilter(activeIndex);
+                        setActiveFilter(topic);
                       },
                       child: Container(
                         alignment: Alignment.center,
