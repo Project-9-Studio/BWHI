@@ -119,6 +119,19 @@ class SheaUserNotifier extends StateNotifier<SheaUser> {
     return state;
   }
 
+  Future<SheaUser> saveFCMToken(String? token) async {
+    try {
+      final db = FirebaseFirestore.instance;
+      await db
+          .collection('users')
+          .doc(state.user?.uid)
+          .set({...state.profile.toMap(), "fcmToken": token});
+    } catch (e) {
+      debugPrint("Could not save profile: ${e.toString()}");
+    }
+    return state;
+  }
+
   SheaUser updateProfile(SheaUserProfile profile) {
     state = state.copyWith(SheaUser(profile: profile));
     return state;
