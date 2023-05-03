@@ -26,8 +26,8 @@ class SheaUserNotificationsView extends HookConsumerWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         child: Column(),
       ),
     );

@@ -42,18 +42,19 @@ class SheaViewServices extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
         ),
-        child: Row(
-          children: const [
+        child: const Row(
+          children: [
             Text(
               "View Services",
               style: TextStyle(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
+                fontSize: 18,
               ),
             ),
             Spacer(),
             HeroIcon(
-              HeroIcons.arrowDownLeft,
+              HeroIcons.arrowUpRight,
               color: Colors.black,
             )
           ],

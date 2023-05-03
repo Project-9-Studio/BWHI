@@ -16,12 +16,23 @@ class SheaDailyChecklist extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 20, bottom: 20),
+            margin: const EdgeInsets.only(top: 20, bottom: 8),
             child: const Text(
               "Daily Checklist",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            width: 284,
+            child: const Text(
+              "Develop healthy habits with a daily habit checklist.",
+              style: TextStyle(
+                color: Color(0xff161616),
+                fontSize: 18,
               ),
             ),
           ),
@@ -54,7 +65,7 @@ class SheaChecklistItem extends HookConsumerWidget {
             margin: const EdgeInsets.only(bottom: 20, right: 16),
             padding: const EdgeInsets.all(16),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Color(0xff126169),
               borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
             child: Row(
@@ -79,6 +90,7 @@ class SheaChecklistItem extends HookConsumerWidget {
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -86,7 +98,7 @@ class SheaChecklistItem extends HookConsumerWidget {
                         item.description ?? "",
                         style: const TextStyle(
                           fontSize: 16,
-                          color: Color(0xFFB3B3B3),
+                          color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

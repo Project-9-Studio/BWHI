@@ -10,7 +10,7 @@ class SheaOnboardAppBar extends StatelessWidget implements PreferredSizeWidget {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       backgroundColor: const Color(0xff50B8C2),
       elevation: 0,
-      leading: Column(),
+      leading: const Column(),
       actions: [
         TextButton(
           onPressed: () {

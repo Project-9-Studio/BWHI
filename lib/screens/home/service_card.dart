@@ -130,8 +130,8 @@ class SheaSchoolServicesCard extends StatelessWidget {
                             margin: const EdgeInsets.only(right: 7),
                             child: const HeroIcon(
                               HeroIcons.phone,
-                              solid: true,
                               color: Colors.black,
+                              style: HeroIconStyle.solid,
                             ),
                           ),
                           const Text("Call", style: actionTextStyle),
@@ -173,8 +173,8 @@ class SheaSchoolServicesCard extends StatelessWidget {
                             margin: const EdgeInsets.only(right: 7),
                             child: const HeroIcon(
                               HeroIcons.map,
-                              solid: true,
                               color: Colors.black,
+                              style: HeroIconStyle.solid,
                             ),
                           ),
                           const Text("Directions", style: actionTextStyle)
@@ -199,8 +199,8 @@ class SheaSchoolServicesCard extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 7),
                     child: const HeroIcon(
                       HeroIcons.globeAlt,
-                      solid: true,
                       color: Colors.black,
+                      style: HeroIconStyle.solid,
                     ),
                   ),
                   const Text("View Website", style: actionTextStyle),

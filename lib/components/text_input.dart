@@ -22,7 +22,7 @@ class SheaTextInput extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isEnabled = enabled != null && enabled!;
+    //final isEnabled = enabled != null && enabled!;
     const labelBorderColor = Color.fromARGB(140, 0, 0, 0);
     final textController = useTextEditingController(text: initialValue);
     textController.selection = TextSelection.collapsed(
