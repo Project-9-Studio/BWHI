@@ -9,6 +9,7 @@ import 'package:shea/models/user/user.dart';
 class SheaSelectSchoolPicker extends HookConsumerWidget {
   final String? school;
   final Widget? widget;
+  final bool? showNotification;
   final Function(String value)? onSelect;
 
   final String noSchoolText = "I don’t see my school";
@@ -18,6 +19,7 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
     this.school,
     this.onSelect,
     this.widget,
+    this.showNotification = true,
   }) : super(key: key);
 
   @override
@@ -186,7 +188,8 @@ class SheaSelectSchoolPicker extends HookConsumerWidget {
                           const Duration(milliseconds: 500),
                         );
                         showFormDialogModal();
-                      } else {
+                      } else if (showNotification != null &&
+                          showNotification != false) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             behavior: SnackBarBehavior.floating,

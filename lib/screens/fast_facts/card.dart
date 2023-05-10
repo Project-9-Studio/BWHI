@@ -10,6 +10,7 @@ class SheaFastFactCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 300,
+      height: 493,
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -19,8 +20,8 @@ class SheaFastFactCard extends StatelessWidget {
         children: [
           if (fact?.imageUrl != null)
             Container(
-              width: double.infinity,
-              height: 300,
+              width: 300,
+              height: 225,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -32,33 +33,38 @@ class SheaFastFactCard extends StatelessWidget {
                 ),
               ),
             ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (fact?.title != null)
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 20,
-                    left: 20,
-                    right: 20,
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (fact?.title != null)
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: 20,
+                        left: 20,
+                        right: 20,
+                      ),
+                      child: Text(fact!.title!),
+                    ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: Text(
+                      fact?.description ?? "",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
-                  child: Text(fact!.title!),
-                ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 20,
-                  left: 20,
-                  right: 20,
-                ),
-                child: Text(
-                  fact?.description ?? "",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),

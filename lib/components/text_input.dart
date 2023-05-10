@@ -54,7 +54,7 @@ class SheaTextInput extends HookConsumerWidget {
           onChanged: onChanged,
           controller: textController,
           enabled: enabled,
-          style: const TextStyle(fontSize: 22),
+          style: const TextStyle(fontSize: 22, color: Colors.black),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,

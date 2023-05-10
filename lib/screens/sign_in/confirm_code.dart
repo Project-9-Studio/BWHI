@@ -31,15 +31,13 @@ class SheaConfirmNumber extends HookConsumerWidget {
     final smsCode = useState("");
     final confirmCode = ref.read(userProvider.notifier).confirmCode;
 
-    void navigateAway(String path) {
-      Navigator.pushNamedAndRemoveUntil(context, path, (route) => false);
-    }
-
     void submitCode() async {
       isLoading.value = true;
       final auth = await confirmCode(verificationId, smsCode.value);
       final path = (auth.profile.id != null) ? 'home' : 'createAccount/name';
-      navigateAway(path);
+      if (context.mounted) {
+        Navigator.pushNamedAndRemoveUntil(context, path, (route) => false);
+      }
     }
 
     return SheaCreateAccountLayout(

@@ -15,6 +15,8 @@ class SheaOnboardHome extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 40, top: 100),
             child: const Image(
               image: AssetImage('assets/images/intro01.png'),
+              width: 188,
+              height: 280,
             ),
           ),
           Container(

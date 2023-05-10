@@ -11,10 +11,6 @@ class SheaSettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void navigateAway() {
-      Navigator.pushNamedAndRemoveUntil(context, "onboard", (route) => false);
-    }
-
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(top: paddingTop ?? 0),
@@ -60,7 +56,13 @@ class SheaSettingsScreen extends StatelessWidget {
                 labelColor: const Color(0xFFFE5C5C),
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();
-                  navigateAway();
+                  if (context.mounted) {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      "onboard",
+                      (route) => false,
+                    );
+                  }
                 },
               ),
             ],

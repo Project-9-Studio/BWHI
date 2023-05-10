@@ -76,7 +76,9 @@ class SheaUserNotifier extends StateNotifier<SheaUser> {
 
     if (profile.exists) {
       final data = profile.data();
-      final checkItems = Map<String, Timestamp>.from(data?["dailyCheckItems"]);
+      final checkItems = Map<String, Timestamp>.from(
+        data?["dailyCheckItems"] ?? {},
+      );
       state = state.copyWith(
         SheaUser(
           profile: SheaUserProfile.fromMap(data),

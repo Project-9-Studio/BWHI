@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:phone_number/phone_number.dart';
 import 'package:shea/screens/create_account/layout.dart';
 import 'package:shea/components/primary_button.dart';
 import 'package:shea/screens/sign_in/confirm_code.dart';
+import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 
 class SheaSignIn extends HookConsumerWidget {
   const SheaSignIn({Key? key}) : super(key: key);
@@ -13,24 +13,9 @@ class SheaSignIn extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
-    final phoneUtil = PhoneNumberUtil();
-    final regionCode = useState("US");
-    final phoneController = PhoneNumberEditingController(
-      phoneUtil,
-      regionCode: regionCode.value,
-      behavior: PhoneInputBehavior.strict,
-    );
-
-    useEffect(() {
-      phoneUtil.carrierRegionCode().then((value) {
-        regionCode.value = value;
-      });
-      return;
-    }, []);
-
-    void navigateHome() {
-      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
-    }
+    final phoneController = useTextEditingController();
+    const regionCode = CountryWithPhoneCode.us();
+    final error = useState<String>("");
 
     return SheaCreateAccountLayout(
       child: Column(children: [
@@ -50,13 +35,31 @@ class SheaSignIn extends HookConsumerWidget {
         ),
         TextField(
           controller: phoneController,
+          keyboardType: TextInputType.phone,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
-          keyboardType: TextInputType.phone,
+          inputFormatters: [
+            LibPhonenumberTextFormatter(
+              country: regionCode,
+              inputContainsCountryCode: false,
+            ),
+          ],
         ),
+        if (error.value.isNotEmpty)
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: Text(
+              error.value,
+              style: const TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
+          ),
         Expanded(
           child: (isLoading.value)
               ? const Center(child: CircularProgressIndicator())
@@ -69,16 +72,23 @@ class SheaSignIn extends HookConsumerWidget {
             onPressed: () async {
               try {
                 isLoading.value = true;
-                PhoneNumber phoneNumber =
-                    await PhoneNumberUtil().parse("+1${phoneController.text}");
+                error.value = "";
+                final number = formatNumberSync(
+                    "+${regionCode.phoneCode} ${phoneController.text}");
 
                 await FirebaseAuth.instance.verifyPhoneNumber(
-                  phoneNumber: phoneNumber.international,
+                  phoneNumber: number,
                   verificationCompleted:
                       (PhoneAuthCredential credential) async {
                     await FirebaseAuth.instance
                         .signInWithCredential(credential);
-                    navigateHome();
+                    if (context.mounted) {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        "home",
+                        (route) => false,
+                      );
+                    }
                   },
                   verificationFailed: (FirebaseAuthException e) {
                     isLoading.value = false;
@@ -87,7 +97,9 @@ class SheaSignIn extends HookConsumerWidget {
                       debugPrint('The provided phone number is not valid.');
                       return;
                     }
-                    debugPrint("Error: ${e.toString()}");
+                    final errorStr = "Error: ${e.toString()}";
+                    debugPrint(errorStr);
+                    error.value = errorStr;
                   },
                   codeSent: (String verificationId, int? resendToken) async {
                     Navigator.pushNamed(

@@ -41,6 +41,7 @@ class SheaSelectSchool extends HookConsumerWidget {
                 child: Center(
                   child: SheaSelectSchoolPicker(
                     school: school,
+                    showNotification: false,
                     onSelect: (value) => updateProfile(
                       SheaUserProfile(school: value),
                     ),
