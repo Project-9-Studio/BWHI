@@ -12,7 +12,7 @@ class SheaOnboardHome extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(bottom: 40, top: 100),
+            margin: const EdgeInsets.only(bottom: 40, top: 40),
             child: const Image(
               image: AssetImage('assets/images/intro01.png'),
               width: 188,

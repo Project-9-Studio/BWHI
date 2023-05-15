@@ -87,7 +87,10 @@ class SheaAppLanding extends HookConsumerWidget {
           await FirebaseMessaging.instance.subscribeToTopic("affirmation");
           await FirebaseMessaging.instance.subscribeToTopic("reminder");
 
-          if (context.mounted) Navigator.popAndPushNamed(context, path);
+          if (context.mounted) {
+            Navigator.popAndPushNamed(context, path);
+            return;
+          }
         }
 
         if (context.mounted) Navigator.popAndPushNamed(context, "onboard");

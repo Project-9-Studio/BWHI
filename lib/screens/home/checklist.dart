@@ -29,7 +29,7 @@ class SheaDailyChecklist extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 20),
             width: 284,
             child: const Text(
-              "Develop healthy habits with a daily habit checklist.",
+              "Create a healthier lifestyle with a daily habit checklist.",
               style: TextStyle(
                 color: Color(0xff161616),
                 fontSize: 18,

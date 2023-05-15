@@ -67,13 +67,8 @@ class SheaSchoolServicesCard extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 4, bottom: 12),
-              padding: const EdgeInsets.only(bottom: 12),
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 1, color: Color(0xff9E9C8A)),
-                ),
-              ),
+              margin: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(bottom: 6),
               child: Text(
                 serviceCenter.name ?? "",
                 style: const TextStyle(
@@ -82,6 +77,10 @@ class SheaSchoolServicesCard extends StatelessWidget {
                   color: Color(0xff9E9C8A),
                 ),
               ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 4),
+              child: const Divider(color: Colors.black),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 8),
